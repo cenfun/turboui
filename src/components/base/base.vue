@@ -2,6 +2,7 @@
 export default {};
 </script>
 <style>
+@import "./layout.scss";
 
 .tui *,
 .tui *::before,
@@ -10,15 +11,15 @@ export default {};
 }
 
 .tui {
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 14px;
+
     button,
     input,
     optgroup,
     select,
     textarea {
         font-family: inherit;
-        font-size: 100%;
-        line-height: 1.15;
-        margin: 0;
     }
 
     button,

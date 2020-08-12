@@ -1,14 +1,14 @@
 <template>
-    <div class="tui-popup">
-        <div class="tui-popup-main">
-            <div class="tui-popup-header">
+    <div class="tui tui-modal">
+        <div class="tui-modal-main">
+            <div class="tui-modal-header">
                 {{ title }}
             </div>
-            <div class="tui-popup-content">
+            <div class="tui-modal-content">
                 <slot />
             </div>
         </div>
-        <div class="tui-popup-close">
+        <div class="tui-modal-close">
             X
         </div>
     </div>
@@ -18,7 +18,7 @@
 import Base from "../base/base.vue";
 import createElement from "../../helper/create-element.js";
 
-const Popup = {
+const Modal = {
 
     extends: Base,
 
@@ -37,7 +37,7 @@ const Popup = {
         //close event handler
 
         const bindEvents = (e) => {
-            const $main = this.$el.querySelector(".tui-popup-main");
+            const $main = this.$el.querySelector(".tui-modal-main");
             if ($main === e.target || $main.contains(e.target)) {
                 return;
             }
@@ -60,14 +60,14 @@ const Popup = {
 
 };
 
-Popup.create = (option, container) => {
-    return createElement(Popup, option, container);
+Modal.create = (option, container) => {
+    return createElement(Modal, option, container);
 };
 
-export default Popup;
+export default Modal;
 </script>
 <style lang="scss">
-.tui-popup {
+.tui-modal {
     position: absolute;
     top: 0;
     left: 0;
@@ -77,7 +77,7 @@ export default Popup;
     z-index: 1000;
 }
 
-.tui-popup-close {
+.tui-modal-close {
     position: absolute;
     top: 20%;
     right: 20%;
@@ -93,7 +93,7 @@ export default Popup;
     line-height: 40px;
 }
 
-.tui-popup-main {
+.tui-modal-main {
     background: #fff;
     border-radius: 10px;
     position: absolute;
@@ -108,50 +108,50 @@ export default Popup;
     flex-direction: column;
 }
 
-.tui-popup-header {
+.tui-modal-header {
     border-bottom: 2px solid #333;
     padding-bottom: 10px;
     font-size: 18px;
     font-weight: bold;
 }
 
-.tui-popup-content {
+.tui-modal-content {
     width: 100%;
     flex: 1;
     overflow-y: auto;
     position: relative;
 }
 
-.tui-popup-label {
+.tui-modal-label {
     font-size: 16px;
     font-weight: bold;
     margin-top: 10px;
 }
 
-.tui-popup-item {
+.tui-modal-item {
     padding: 5px 5px;
     border-bottom: 1px solid #f5f5f5;
     position: relative;
 }
 
-.tui-popup-item:hover {
+.tui-modal-item:hover {
     background-color: #f5f5f5;
 }
 
-.tui-popup-line {
+.tui-modal-line {
     word-break: break-word;
     overflow-wrap: break-word;
     word-wrap: break-word;
 }
 
-.tui-popup-tip {
+.tui-modal-tip {
     color: #666;
     word-break: break-all;
     overflow-wrap: break-word;
     word-wrap: break-word;
 }
 
-.tui-popup-arrow {
+.tui-modal-arrow {
     display: inline-block;
     width: 16px;
     height: 16px;
@@ -161,21 +161,21 @@ export default Popup;
     background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='%23333' d='M3,2V11Q3,13,5,13H12.5L10.5,15H12L14.5,12.5L12,10H10.5L12.5,12H5Q4,12,4,11V2z'/%3e%3c/svg%3e");
 }
 
-.tui-popup-table {
+.tui-modal-table {
     margin-top: 5px;
     position: relative;
     border-collapse: collapse;
     width: 100%;
 }
 
-.tui-popup-table th,
-.tui-popup-table td {
+.tui-modal-table th,
+.tui-modal-table td {
     text-align: left;
     border: 1px solid #eee;
     padding: 5px 5px;
 }
 
-.tui-popup-nowrap {
+.tui-modal-nowrap {
     white-space: nowrap;
 }
 </style>

@@ -1,12 +1,17 @@
 import Util from "./helper/util.js";
+import createElement from "./helper/create-element.js";
 
+import TuiButton from "./components/button/button.vue";
 import TuiCheckbox from "./components/checkbox/checkbox.vue";
 import TuiInput from "./components/input/input.vue";
-import TuiPopup from "./components/popup/popup.vue";
+import TuiModal from "./components/modal/modal.vue";
+
 export default {
     Util,
+    createElement,
 
+    TuiButton,
     TuiCheckbox,
     TuiInput,
-    TuiPopup
+    TuiModal
 };

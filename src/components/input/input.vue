@@ -1,5 +1,5 @@
 <template>
-    <div class="tui-input">
+    <div class="tui tui-input">
         <label class="tui-input-label"><slot /></label>
         <input v-select class="tui-input-input"
                :placeholder="placeholder"

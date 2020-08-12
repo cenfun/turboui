@@ -1,0 +1,40 @@
+
+.tui-hs-5 {
+    display: inline-block;
+    width: 5px;
+    height: 100%;
+}
+
+.tui-hs-10 {
+    display: inline-block;
+    width: 10px;
+    height: 100%;
+}
+
+.tui-vs-5 {
+    display: block;
+    height: 5px;
+}
+
+.tui-vs-10 {
+    display: block;
+    height: 10px;
+}
+
+.tui-flex-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    position: relative;
+}
+
+.tui-flex-column {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.tui-flex-auto {
+    flex: 1 1 0%;
+    overflow: hidden;
+}

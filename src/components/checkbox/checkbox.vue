@@ -1,5 +1,5 @@
 <template>
-    <div class="tui-checkbox">
+    <div class="tui tui-checkbox">
         <input
             :id="id"
             :checked="value"

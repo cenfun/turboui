@@ -5,7 +5,9 @@ module.exports = {
     mode: "production",
     //mode: "development",
     devtool: "source-map",
-    externals: ["vue"],
+    externals: {
+        vue: "Vue"
+    },
     output: {
         filename: "turboui.js",
         umdNamedDefine: true,
