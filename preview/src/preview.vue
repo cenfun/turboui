@@ -1,9 +1,9 @@
 <template>
-    <div class="tui-demo tui-flex-column">
-        <div class="tui-demo-header">
+    <div class="tui-preview tui-flex-column">
+        <div class="tui-preview-header">
             Turbo UI Demo
         </div>
-        <div class="tui-demo-body tui-flex-auto">
+        <div class="tui-preview-body tui-flex-auto">
             <div class="tui-item tui-flex-row">
                 <div class="tui-item-name">
                     TuiButton
@@ -60,7 +60,7 @@
                 </div>
             </div>
         </div>
-        <div class="tui-demo-footer">
+        <div class="tui-preview-footer">
             &copy; TUI
         </div>
     </div>
@@ -129,11 +129,11 @@ body {
     font-size: 14px;
 }
 
-.tui-demo {
+.tui-preview {
     height: 100%;
 }
 
-.tui-demo-header {
+.tui-preview-header {
     padding: 10px 10px;
     font-weight: bold;
     font-size: 16px;
@@ -141,7 +141,7 @@ body {
     border-bottom: 1px solid #ccc;
 }
 
-.tui-demo-body {
+.tui-preview-body {
     padding: 10px 10px;
 }
 
@@ -154,7 +154,7 @@ body {
     padding: 5px 0 5px 10px;
 }
 
-.tui-demo-footer {
+.tui-preview-footer {
     padding: 5px 5px;
     background: #eee;
 }

@@ -7,7 +7,7 @@
     "dist"
   ],
   "scripts": {
-    "demo": "npx webpack demo/src/index.js -o demo/dist/demo.js --display-modules --mode=development",
+    "preview": "npx webpack preview/src/index.js -o preview/dist/preview.js --display-modules --mode=development",
     "build": "npx webpack --display-modules"
   },
   "repository": {
