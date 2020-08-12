@@ -1,28 +1,34 @@
 <template>
-    <div class="gui-checkbox">
+    <div class="tui-checkbox">
         <input
             :id="id"
             :checked="value"
-            class="gui-checkbox-input"
+            class="tui-checkbox-input"
             type="checkbox"
             @change="$emit('change', $event.target.checked)"
         >
-        <label class="gui-checkbox-label" :for="id"><slot /></label>
+        <label class="tui-checkbox-label" :for="id"><slot /></label>
     </div>
 </template>
 <script>
+import Base from "../base/base.vue";
 import Util from "../../helper/util.js";
 export default {
+
+    extends: Base,
+
     model: {
         prop: "value",
         event: "change"
     },
+
     props: {
         value: {
             type: Boolean,
             default: false
         }
     },
+
     data() {
         return {
             id: Util.token(8, "checkbox-")
@@ -31,7 +37,7 @@ export default {
 };
 </script>
 <style>
-.gui-checkbox {
+.tui-checkbox {
     position: relative;
     display: inline-block;
     padding-left: 22px;
@@ -40,7 +46,7 @@ export default {
     line-height: 30px;
 }
 
-.gui-checkbox-input {
+.tui-checkbox-input {
     width: 22px;
     height: 100%;
     position: absolute;
@@ -49,7 +55,7 @@ export default {
     opacity: 0;
 }
 
-.gui-checkbox-label {
+.tui-checkbox-label {
     position: relative;
     margin-bottom: 0;
     vertical-align: top;
@@ -58,7 +64,7 @@ export default {
     white-space: nowrap;
 }
 
-.gui-checkbox-label::before {
+.tui-checkbox-label::before {
     position: absolute;
     top: 7px;
     left: -20px;
@@ -71,39 +77,39 @@ export default {
     border: #adb5bd solid 1px;
 }
 
-.gui-checkbox .gui-checkbox-label::before {
+.tui-checkbox .tui-checkbox-label::before {
     border-radius: 3px;
 }
 
-.gui-checkbox-input:disabled ~ .gui-checkbox-label::before {
+.tui-checkbox-input:disabled ~ .tui-checkbox-label::before {
     background-color: #e9ecef;
 }
 
-.gui-checkbox-input:checked ~ .gui-checkbox-label::before {
+.tui-checkbox-input:checked ~ .tui-checkbox-label::before {
     color: #fff;
     border-color: #0077cf;
     background-color: #0077cf;
 }
 
-.gui-checkbox-input:focus ~ .gui-checkbox-label::before {
+.tui-checkbox-input:focus ~ .tui-checkbox-label::before {
     box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
 }
 
-.gui-checkbox-input:focus:not(:checked) ~ .gui-checkbox-label::before {
+.tui-checkbox-input:focus:not(:checked) ~ .tui-checkbox-label::before {
     border-color: #80bdff;
 }
 
-.gui-checkbox-input:disabled ~ .gui-checkbox-label {
+.tui-checkbox-input:disabled ~ .tui-checkbox-label {
     color: #6c757d;
 }
 
-.gui-checkbox-input:not(:disabled):active ~ .gui-checkbox-label::before {
+.tui-checkbox-input:not(:disabled):active ~ .tui-checkbox-label::before {
     color: #fff;
     background-color: #b3d7ff;
     border-color: #b3d7ff;
 }
 
-.gui-checkbox-label::after {
+.tui-checkbox-label::after {
     position: absolute;
     top: 7px;
     left: -20px;
@@ -117,28 +123,28 @@ export default {
     background-clip: border-box;
 }
 
-.gui-checkbox .gui-checkbox-input:checked ~ .gui-checkbox-label::after {
+.tui-checkbox .tui-checkbox-input:checked ~ .tui-checkbox-label::after {
     background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3e%3cpath fill='%23fff' d='M6.564.75l-3.59 3.612-1.538-1.55L0 4.26 2.974 7.25 8 2.193z'/%3e%3c/svg%3e");
 }
 
-.gui-checkbox .gui-checkbox-input:indeterminate ~ .gui-checkbox-label::before {
+.tui-checkbox .tui-checkbox-input:indeterminate ~ .tui-checkbox-label::before {
     border-color: #0077cf;
     background-color: #0077cf;
 }
 
-.gui-checkbox .gui-checkbox-input:not(:checked) ~ .gui-checkbox-label:hover::before {
+.tui-checkbox .tui-checkbox-input:not(:checked) ~ .tui-checkbox-label:hover::before {
     border-color: #888;
 }
 
-.gui-checkbox .gui-checkbox-input:indeterminate ~ .gui-checkbox-label::after {
+.tui-checkbox .tui-checkbox-input:indeterminate ~ .tui-checkbox-label::after {
     background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 4'%3e%3cpath stroke='%23fff' d='M0 2h4'/%3e%3c/svg%3e");
 }
 
-.gui-checkbox .gui-checkbox-input:disabled:checked ~ .gui-checkbox-label::before {
+.tui-checkbox .tui-checkbox-input:disabled:checked ~ .tui-checkbox-label::before {
     background-color: rgba(0, 123, 255, 0.5);
 }
 
-.gui-checkbox .gui-checkbox-input:disabled:indeterminate ~ .gui-checkbox-label::before {
+.tui-checkbox .tui-checkbox-input:disabled:indeterminate ~ .tui-checkbox-label::before {
     background-color: rgba(0, 123, 255, 0.5);
 }
 </style>

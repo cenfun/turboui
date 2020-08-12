@@ -1,23 +1,26 @@
 <template>
-    <div class="gui-popup">
-        <div class="gui-popup-main">
-            <div class="gui-popup-header">
+    <div class="tui-popup">
+        <div class="tui-popup-main">
+            <div class="tui-popup-header">
                 {{ title }}
             </div>
-            <div class="gui-popup-content">
+            <div class="tui-popup-content">
                 <slot />
             </div>
         </div>
-        <div class="gui-popup-close">
+        <div class="tui-popup-close">
             X
         </div>
     </div>
 </template>
 
 <script>
+import Base from "../base/base.vue";
 import createElement from "../../helper/create-element.js";
 
 const Popup = {
+
+    extends: Base,
 
     props: {
         title: {
@@ -34,7 +37,7 @@ const Popup = {
         //close event handler
 
         const bindEvents = (e) => {
-            const $main = this.$el.querySelector(".gui-popup-main");
+            const $main = this.$el.querySelector(".tui-popup-main");
             if ($main === e.target || $main.contains(e.target)) {
                 return;
             }
@@ -64,7 +67,7 @@ Popup.create = (option, container) => {
 export default Popup;
 </script>
 <style lang="scss">
-.gui-popup {
+.tui-popup {
     position: absolute;
     top: 0;
     left: 0;
@@ -74,7 +77,7 @@ export default Popup;
     z-index: 1000;
 }
 
-.gui-popup-close {
+.tui-popup-close {
     position: absolute;
     top: 20%;
     right: 20%;
@@ -90,7 +93,7 @@ export default Popup;
     line-height: 40px;
 }
 
-.gui-popup-main {
+.tui-popup-main {
     background: #fff;
     border-radius: 10px;
     position: absolute;
@@ -105,50 +108,50 @@ export default Popup;
     flex-direction: column;
 }
 
-.gui-popup-header {
+.tui-popup-header {
     border-bottom: 2px solid #333;
     padding-bottom: 10px;
     font-size: 18px;
     font-weight: bold;
 }
 
-.gui-popup-content {
+.tui-popup-content {
     width: 100%;
     flex: 1;
     overflow-y: auto;
     position: relative;
 }
 
-.gui-popup-label {
+.tui-popup-label {
     font-size: 16px;
     font-weight: bold;
     margin-top: 10px;
 }
 
-.gui-popup-item {
+.tui-popup-item {
     padding: 5px 5px;
     border-bottom: 1px solid #f5f5f5;
     position: relative;
 }
 
-.gui-popup-item:hover {
+.tui-popup-item:hover {
     background-color: #f5f5f5;
 }
 
-.gui-popup-line {
+.tui-popup-line {
     word-break: break-word;
     overflow-wrap: break-word;
     word-wrap: break-word;
 }
 
-.gui-popup-tip {
+.tui-popup-tip {
     color: #666;
     word-break: break-all;
     overflow-wrap: break-word;
     word-wrap: break-word;
 }
 
-.gui-popup-arrow {
+.tui-popup-arrow {
     display: inline-block;
     width: 16px;
     height: 16px;
@@ -158,21 +161,21 @@ export default Popup;
     background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='%23333' d='M3,2V11Q3,13,5,13H12.5L10.5,15H12L14.5,12.5L12,10H10.5L12.5,12H5Q4,12,4,11V2z'/%3e%3c/svg%3e");
 }
 
-.gui-popup-table {
+.tui-popup-table {
     margin-top: 5px;
     position: relative;
     border-collapse: collapse;
     width: 100%;
 }
 
-.gui-popup-table th,
-.gui-popup-table td {
+.tui-popup-table th,
+.tui-popup-table td {
     text-align: left;
     border: 1px solid #eee;
     padding: 5px 5px;
 }
 
-.gui-popup-nowrap {
+.tui-popup-nowrap {
     white-space: nowrap;
 }
 </style>

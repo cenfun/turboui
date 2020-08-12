@@ -1,23 +1,24 @@
 {
-  "name": "pui",
+  "name": "turboui",
   "version": "1.0.0",
-  "description": "pui",
-  "main": "dist/pui.js",
+  "description": "turboui",
+  "main": "dist/turboui.js",
   "files": [
     "dist"
   ],
   "scripts": {
+    "dev": "npx webpack --display-modules --mode=development",
     "build": "npx webpack --display-modules"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/cenfun/pui.git"
+    "url": "git+https://github.com/cenfun/turboui.git"
   },
   "author": "",
   "bugs": {
-    "url": "https://github.com/cenfun/pui/issues"
+    "url": "https://github.com/cenfun/turboui/issues"
   },
-  "homepage": "https://github.com/cenfun/pui#readme",
+  "homepage": "https://github.com/cenfun/turboui#readme",
   "dependencies": {
     "vue": "^2.6.11"
   },

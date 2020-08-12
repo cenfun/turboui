@@ -7,13 +7,13 @@ module.exports = {
     devtool: "source-map",
     externals: ["vue"],
     output: {
-        filename: "pui.js",
+        filename: "turboui.js",
         umdNamedDefine: true,
-        library: "pui",
+        library: "turboui",
         libraryTarget: "umd"
     },
     plugins: [new VueLoaderPlugin(), new StatsReportPlugin({
-        title: "Stats Report - PUI",
+        title: "Stats Report - Turbo UI",
         output: ".temp/stats-report.html",
         outputStatsJson: true,
         generateMinifiedSize: true,
@@ -40,14 +40,13 @@ module.exports = {
                     injectType: "singletonStyleTag",
                     attributes: {
                         //Add custom attrs to style for debug
-                        context: "pui"
+                        context: "turboui"
                     }
                 }
             }, {
                 loader: "css-loader",
                 options: {
                     esModule: false,
-                    import: false,
                     sourceMap: false
                 }
             }, {

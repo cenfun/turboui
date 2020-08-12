@@ -1,7 +1,7 @@
 <template>
-    <div class="gui-input">
-        <label class="gui-input-label"><slot /></label>
-        <input v-select class="gui-input-input"
+    <div class="tui-input">
+        <label class="tui-input-label"><slot /></label>
+        <input v-select class="tui-input-input"
                :placeholder="placeholder"
                :style="{width:width}"
                :title="title"
@@ -11,15 +11,21 @@
     </div>
 </template>
 <script>
+import Base from "../base/base.vue";
 import selectOnFocus from "../../helper/select-on-focus.js";
 export default {
+
     directives: {
         select: selectOnFocus
     },
+
+    extends: Base,
+
     model: {
         prop: "value",
         event: "input"
     },
+
     props: {
         value: {
             type: String,
@@ -41,25 +47,25 @@ export default {
 };
 </script>
 <style>
-.gui-input {
+.tui-input {
     display: flex;
     flex-direction: row;
 }
 
-.gui-input input {
+.tui-input input {
     margin: 0;
     font-size: inherit;
     overflow: visible;
 }
 
-.gui-input-label {
+.tui-input-label {
     height: 25px;
     line-height: 25px;
     padding-right: 5px;
     display: inline-block;
 }
 
-.gui-input-input {
+.tui-input-input {
     display: inline-block;
     padding: 2px 5px;
     height: 25px;
@@ -73,11 +79,11 @@ export default {
     transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
-.gui-input-input:hover {
+.tui-input-input:hover {
     border: 1px solid #aaa;
 }
 
-.gui-input-input:focus {
+.tui-input-input:focus {
     color: #495057;
     background-color: #fff;
     border-color: #80bdff;

@@ -1,11 +1,8 @@
-# PUI
-> Pomelo UI
-
-![](assets/logo.png)
+# Turbo UI
 
 ## Install
 ```sh
-npm i pui
+npm i turboui
 ```
 ## Usage
 

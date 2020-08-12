@@ -1,9 +1,12 @@
+import Util from "./helper/util.js";
 
-import PuiCheckbox from "./components/checkbox/checkbox.vue";
-import PuiInput from "./components/input/input.vue";
-import PuiPopup from "./components/popup/popup.vue";
+import TuiCheckbox from "./components/checkbox/checkbox.vue";
+import TuiInput from "./components/input/input.vue";
+import TuiPopup from "./components/popup/popup.vue";
 export default {
-    PuiCheckbox,
-    PuiInput,
-    PuiPopup
+    Util,
+
+    TuiCheckbox,
+    TuiInput,
+    TuiPopup
 };
