@@ -13,6 +13,10 @@
                         Name:
                     </TuiInput>
                     <div class="tui-hs-10" />
+                    <TuiInput disabled>
+                        Disabled:
+                    </TuiInput>
+                    <div class="tui-hs-10" />
                     <TuiInput placeholder="email">
                         Email:
                     </TuiInput>
@@ -31,6 +35,10 @@
                         Button
                     </TuiButton>
                     <div class="tui-hs-5" />
+                    <TuiButton disabled>
+                        Disabled
+                    </TuiButton>
+                    <div class="tui-hs-5" />
                     <TuiButton primary>
                         Button Primary
                     </TuiButton>
@@ -44,6 +52,10 @@
                 <div class="tui-item-example tui-flex-auto tui-flex-row">
                     <TuiCheckbox>
                         Checkbox
+                    </TuiCheckbox>
+                    <div class="tui-hs-5" />
+                    <TuiCheckbox disabled>
+                        Disabled
                     </TuiCheckbox>
                     <div class="tui-hs-5" />
                     <TuiCheckbox v-model="checkboxChecked">
@@ -123,9 +135,9 @@ const Demo = {
                     },
                     scopedSlots: {
                         default: (props) => {
-                            return h(TuiButton, {
+                            return h(TuiCheckbox, {
                                 props: {
-                                    label: "Model Button"
+                                    label: "Model Checkbox"
                                 }
                             });
                         }

@@ -1,3 +1,10 @@
+export const isInvalid = function(data) {
+    if (typeof data === "undefined" || data === null) {
+        return true;
+    }
+    return false;
+};
+
 export const toNum = function(num, toInt) {
     if (typeof (num) !== "number") {
         num = parseFloat(num);
@@ -31,6 +38,7 @@ export const token = function(len, pre = "") {
 
 
 export default {
+    isInvalid,
     toNum,
     toList,
     token

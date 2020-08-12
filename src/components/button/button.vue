@@ -1,5 +1,5 @@
 <template>
-    <button :class="className">
+    <button :class="className" :disabled="disabled">
         <template v-if="label">
             {{ label }}
         </template>
@@ -15,6 +15,10 @@ export default {
     extends: Base,
 
     props: {
+        disabled: {
+            type: Boolean,
+            default: false
+        },
         primary: {
             type: Boolean,
             default: false
@@ -38,7 +42,6 @@ export default {
 </script>
 <style lang="scss">
 .tui-button {
-    cursor: pointer;
     display: inline-block;
     font-weight: 400;
     text-align: center;
@@ -55,18 +58,20 @@ export default {
     min-width: 65px;
     white-space: nowrap;
 
-    &:focus,
-    &.focus {
+    &:focus {
         outline: 0;
         box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
     }
 
-    &.disabled,
     &:disabled {
         opacity: 0.65;
     }
 
-    &:not(&-loading):hover {
+    &:not(:disabled) {
+        cursor: pointer;
+    }
+
+    &:not(:disabled):hover {
         color: #fff;
         background-color: #6c757d;
         border-color: #6c757d;
@@ -83,12 +88,10 @@ export default {
             border-color: #0062cc;
         }
 
-        &:focus,
-        &.focus {
+        &:focus {
             box-shadow: 0 0 0 0.2rem rgba(38, 143, 255, 0.5);
         }
 
-        &.disabled,
         &:disabled {
             opacity: 0.65;
             color: #fff;

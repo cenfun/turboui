@@ -2,13 +2,13 @@
 export default {
 
     model: {
-        prop: "inputModelValue",
+        prop: "parentModelValue",
         event: "model-change"
     },
 
     props: {
-        inputModelValue: {
-            type: [String, Boolean, Number],
+        parentModelValue: {
+            type: [String, Boolean, Number, Object],
             default: null
         },
         value: {
@@ -27,23 +27,26 @@ export default {
 
     data() {
         return {
-            modelValue: this.inputModelValue
+            modelValue: this.parentModelValue
         };
     },
 
     watch: {
+        parentModelValue: function(nv) {
+            this.modelValue = this.parentModelValue;
+        },
         modelValue: function(nv) {
             this.$emit("model-change", nv);
         }
     },
 
     created() {
-        console.log(this.modelValue);
+        
     }
 
 };
 </script>
-<style>
+<style lang="scss">
 @import "./layout.scss";
 
 .tui *,

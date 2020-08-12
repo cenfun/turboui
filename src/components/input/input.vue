@@ -10,6 +10,7 @@
         </label>
         <input v-model="modelValue" v-select
                class="tui-input-input"
+               :disabled="disabled"
                :placeholder="placeholder"
                :style="{width:width}"
                :title="title"
@@ -28,6 +29,10 @@ export default {
     extends: Base,
 
     props: {
+        disabled: {
+            type: Boolean,
+            default: false
+        },
         placeholder: {
             type: String,
             default: ""
@@ -39,48 +44,46 @@ export default {
     }
 };
 </script>
-<style>
+<style lang="scss">
 .tui-input {
     display: flex;
     flex-direction: row;
-}
 
-.tui-input input {
-    margin: 0;
-    font-size: inherit;
-    overflow: visible;
-}
+    .tui-input-label {
+        height: 25px;
+        line-height: 25px;
+        padding-right: 5px;
+        display: inline-block;
+    }
 
-.tui-input-label {
-    height: 25px;
-    line-height: 25px;
-    padding-right: 5px;
-    display: inline-block;
-}
+    .tui-input-input {
+        display: inline-block;
+        padding: 2px 5px;
+        height: 25px;
+        font-weight: 400;
+        line-height: 1.5;
+        color: #495057;
+        background-color: #fff;
+        background-clip: padding-box;
+        border: 1px solid #aaa;
+        border-radius: 5px;
+        transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 
-.tui-input-input {
-    display: inline-block;
-    padding: 2px 5px;
-    height: 25px;
-    font-weight: 400;
-    line-height: 1.5;
-    color: #495057;
-    background-color: #fff;
-    background-clip: padding-box;
-    border: 1px solid #ced4da;
-    border-radius: 5px;
-    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-}
+        &:hover {
+            border: 1px solid #888;
+        }
 
-.tui-input-input:hover {
-    border: 1px solid #aaa;
-}
+        &:focus {
+            color: #495057;
+            background-color: #fff;
+            border-color: #80bdff;
+            outline: 0;
+            box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+        }
 
-.tui-input-input:focus {
-    color: #495057;
-    background-color: #fff;
-    border-color: #80bdff;
-    outline: 0;
-    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+        &:disabled {
+            border: 1px solid #ccc;
+        }
+    }
 }
 </style>

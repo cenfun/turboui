@@ -1,10 +1,11 @@
 <template>
     <div class="tui tui-modal">
-        <div class="tui-modal-main">
+        <div class="tui-modal-main tui-flex-column" :style="styleMain">
             <div class="tui-modal-header">
                 {{ title }}
             </div>
-            <div class="tui-modal-content">
+            <div v-if="spaceAfterHeader" class="tui-vs-10" />
+            <div class="tui-modal-content tui-flex-auto">
                 <slot />
             </div>
         </div>
@@ -22,7 +23,27 @@ const Modal = {
 
     extends: Base,
 
-    props: {},
+    props: {
+        padding: {
+            type: String,
+            default: "20%"
+        },
+        spaceAfterHeader: {
+            type: Boolean,
+            default: true
+        }
+    },
+
+    computed: {
+        styleMain: function() {
+            return {
+                left: this.padding,
+                right: this.padding,
+                top: this.padding,
+                bottom: this.padding
+            };
+        }
+    },
 
     mounted() {
         if (!this.$el.parentNode) {
@@ -92,15 +113,9 @@ export default Modal;
     background: #fff;
     border-radius: 10px;
     position: absolute;
-    left: 20%;
-    right: 20%;
-    top: 20%;
-    bottom: 20%;
     overflow: hidden;
     padding: 20px;
     box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
 }
 
 .tui-modal-header {
@@ -112,7 +127,6 @@ export default Modal;
 
 .tui-modal-content {
     width: 100%;
-    flex: 1;
     overflow-y: auto;
     position: relative;
 }
