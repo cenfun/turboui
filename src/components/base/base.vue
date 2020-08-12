@@ -11,6 +11,10 @@ export default {
             type: [String, Boolean, Number],
             default: null
         },
+        value: {
+            type: String,
+            default: ""
+        },
         label: {
             type: String,
             default: ""

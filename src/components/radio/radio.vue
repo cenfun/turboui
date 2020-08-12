@@ -3,6 +3,7 @@
         <input
             :id="id"
             v-model="modelValue"
+            :checked="getChecked"
             class="tui-radio-input"
             :name="name"
             type="radio"
@@ -26,9 +27,9 @@ export default {
     extends: Base,
 
     props: {
-        name: {
-            type: String,
-            default: ""
+        checked: {
+            type: Boolean,
+            default: false
         }
     },
 
@@ -36,6 +37,15 @@ export default {
         return {
             id: Util.token(8, "radio-")
         };
+    },
+
+    computed: {
+        getChecked: function() {
+            if (this.modelValue === undefined) {
+                return this.checked;
+            }
+            return this.modelValue === this.value;
+        }
     }
 };
 </script>
@@ -56,6 +66,8 @@ export default {
     left: 0;
     top: 0;
     opacity: 0;
+    padding: 0;
+    margin: 0;
 }
 
 .tui-radio-label {

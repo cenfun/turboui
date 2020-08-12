@@ -26,10 +26,11 @@
                 <div class="tui-item-name">
                     TuiButton
                 </div>
-                <div class="tui-item-example tui-flex-auto">
+                <div class="tui-item-example tui-flex-auto tui-flex-row">
                     <TuiButton>
                         Button
                     </TuiButton>
+                    <div class="tui-hs-5" />
                     <TuiButton primary>
                         Button Primary
                     </TuiButton>
@@ -40,10 +41,11 @@
                 <div class="tui-item-name">
                     TuiCheckbox
                 </div>
-                <div class="tui-item-example tui-flex-auto">
+                <div class="tui-item-example tui-flex-auto tui-flex-row">
                     <TuiCheckbox>
                         Checkbox
                     </TuiCheckbox>
+                    <div class="tui-hs-5" />
                     <TuiCheckbox v-model="checkboxChecked">
                         Checkbox v-model {{ checkboxChecked }}
                     </TuiCheckbox>
@@ -54,13 +56,16 @@
                 <div class="tui-item-name">
                     TuiRadio
                 </div>
-                <div class="tui-item-example tui-flex-auto">
-                    <TuiRadio>
-                        Radio
+                <div class="tui-item-example tui-flex-auto tui-flex-row">
+                    <TuiRadio v-model="radioValue" value="1">
+                        Radio 1
                     </TuiRadio>
-                    <TuiRadio v-model="radioChecked">
-                        Radio v-model {{ radioChecked }}
+                    <div class="tui-hs-5" />
+                    <TuiRadio v-model="radioValue" value="2">
+                        Radio 2
                     </TuiRadio>
+                    <div class="tui-hs-5" />
+                    <div>{{ radioValue }}</div>
                 </div>
             </div>
 
@@ -96,7 +101,7 @@ const Demo = {
         return {
             inputText: "",
             checkboxChecked: true,
-            radioChecked: true
+            radioValue: ""
         };
     },
 
