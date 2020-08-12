@@ -22,12 +22,7 @@ const Modal = {
 
     extends: Base,
 
-    props: {
-        title: {
-            type: String,
-            default: ""
-        }
-    },
+    props: {},
 
     mounted() {
         if (!this.$el.parentNode) {

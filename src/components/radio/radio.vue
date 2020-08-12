@@ -1,12 +1,14 @@
 <template>
-    <div class="tui tui-checkbox">
+    <div class="tui tui-radio">
         <input
             :id="id"
             v-model="modelValue"
-            class="tui-checkbox-input"
-            type="checkbox"
+            class="tui-radio-input"
+            :name="name"
+            type="radio"
+            :value="value"
         >
-        <label class="tui-checkbox-label" :for="id">
+        <label class="tui-radio-label" :for="id">
             <template v-if="label">
                 {{ label }}
             </template>
@@ -23,17 +25,22 @@ export default {
 
     extends: Base,
 
-    props: {},
+    props: {
+        name: {
+            type: String,
+            default: ""
+        }
+    },
 
     data() {
         return {
-            id: Util.token(8, "checkbox-")
+            id: Util.token(8, "radio-")
         };
     }
 };
 </script>
 <style>
-.tui-checkbox {
+.tui-radio {
     position: relative;
     display: inline-block;
     padding-left: 22px;
@@ -42,7 +49,7 @@ export default {
     line-height: 30px;
 }
 
-.tui-checkbox-input {
+.tui-radio-input {
     width: 22px;
     height: 100%;
     position: absolute;
@@ -51,7 +58,7 @@ export default {
     opacity: 0;
 }
 
-.tui-checkbox-label {
+.tui-radio-label {
     position: relative;
     margin-bottom: 0;
     vertical-align: top;
@@ -60,7 +67,7 @@ export default {
     white-space: nowrap;
 }
 
-.tui-checkbox-label::before {
+.tui-radio-label::before {
     position: absolute;
     top: 7px;
     left: -20px;
@@ -73,39 +80,39 @@ export default {
     border: #adb5bd solid 1px;
 }
 
-.tui-checkbox .tui-checkbox-label::before {
+.tui-radio .tui-radio-label::before {
     border-radius: 3px;
 }
 
-.tui-checkbox-input:disabled ~ .tui-checkbox-label::before {
+.tui-radio-input:disabled ~ .tui-radio-label::before {
     background-color: #e9ecef;
 }
 
-.tui-checkbox-input:checked ~ .tui-checkbox-label::before {
+.tui-radio-input:checked ~ .tui-radio-label::before {
     color: #fff;
     border-color: #0077cf;
     background-color: #0077cf;
 }
 
-.tui-checkbox-input:focus ~ .tui-checkbox-label::before {
+.tui-radio-input:focus ~ .tui-radio-label::before {
     box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
 }
 
-.tui-checkbox-input:focus:not(:checked) ~ .tui-checkbox-label::before {
+.tui-radio-input:focus:not(:checked) ~ .tui-radio-label::before {
     border-color: #80bdff;
 }
 
-.tui-checkbox-input:disabled ~ .tui-checkbox-label {
+.tui-radio-input:disabled ~ .tui-radio-label {
     color: #6c757d;
 }
 
-.tui-checkbox-input:not(:disabled):active ~ .tui-checkbox-label::before {
+.tui-radio-input:not(:disabled):active ~ .tui-radio-label::before {
     color: #fff;
     background-color: #b3d7ff;
     border-color: #b3d7ff;
 }
 
-.tui-checkbox-label::after {
+.tui-radio-label::after {
     position: absolute;
     top: 7px;
     left: -20px;
@@ -119,28 +126,28 @@ export default {
     background-clip: border-box;
 }
 
-.tui-checkbox .tui-checkbox-input:checked ~ .tui-checkbox-label::after {
+.tui-radio .tui-radio-input:checked ~ .tui-radio-label::after {
     background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3e%3cpath fill='%23fff' d='M6.564.75l-3.59 3.612-1.538-1.55L0 4.26 2.974 7.25 8 2.193z'/%3e%3c/svg%3e");
 }
 
-.tui-checkbox .tui-checkbox-input:indeterminate ~ .tui-checkbox-label::before {
+.tui-radio .tui-radio-input:indeterminate ~ .tui-radio-label::before {
     border-color: #0077cf;
     background-color: #0077cf;
 }
 
-.tui-checkbox .tui-checkbox-input:not(:checked) ~ .tui-checkbox-label:hover::before {
+.tui-radio .tui-radio-input:not(:checked) ~ .tui-radio-label:hover::before {
     border-color: #888;
 }
 
-.tui-checkbox .tui-checkbox-input:indeterminate ~ .tui-checkbox-label::after {
+.tui-radio .tui-radio-input:indeterminate ~ .tui-radio-label::after {
     background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 4'%3e%3cpath stroke='%23fff' d='M0 2h4'/%3e%3c/svg%3e");
 }
 
-.tui-checkbox .tui-checkbox-input:disabled:checked ~ .tui-checkbox-label::before {
+.tui-radio .tui-radio-input:disabled:checked ~ .tui-radio-label::before {
     background-color: rgba(0, 123, 255, 0.5);
 }
 
-.tui-checkbox .tui-checkbox-input:disabled:indeterminate ~ .tui-checkbox-label::before {
+.tui-radio .tui-radio-input:disabled:indeterminate ~ .tui-radio-label::before {
     background-color: rgba(0, 123, 255, 0.5);
 }
 </style>

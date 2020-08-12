@@ -1,12 +1,18 @@
 <template>
     <div class="tui tui-input">
-        <label class="tui-input-label"><slot /></label>
-        <input v-select class="tui-input-input"
+        <label class="tui-input-label">
+            <template v-if="label">
+                {{ label }}
+            </template>
+            <template v-else>
+                <slot />
+            </template>
+        </label>
+        <input v-model="modelValue" v-select
+               class="tui-input-input"
                :placeholder="placeholder"
                :style="{width:width}"
                :title="title"
-               :value="value"
-               @input="$emit('input', $event.target.value)"
         >
     </div>
 </template>
@@ -21,21 +27,8 @@ export default {
 
     extends: Base,
 
-    model: {
-        prop: "value",
-        event: "input"
-    },
-
     props: {
-        value: {
-            type: String,
-            default: ""
-        },
         placeholder: {
-            type: String,
-            default: ""
-        },
-        title: {
             type: String,
             default: ""
         },

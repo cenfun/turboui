@@ -1,9 +1,27 @@
 <template>
     <div class="tui-preview tui-flex-column">
         <div class="tui-preview-header">
-            Turbo UI Demo
+            TUI Preview
         </div>
         <div class="tui-preview-body tui-flex-auto">
+            <div class="tui-item tui-flex-row">
+                <div class="tui-item-name">
+                    TuiInput
+                </div>
+                <div class="tui-item-example tui-flex-auto tui-flex-row">
+                    <TuiInput>
+                        Name:
+                    </TuiInput>
+                    <div class="tui-hs-10" />
+                    <TuiInput placeholder="email">
+                        Email:
+                    </TuiInput>
+                    <TuiInput v-model="inputText" placeholder="width 150px" width="150px" />
+                    <div class="tui-hs-5" />
+                    <div>{{ inputText }}</div>
+                </div>
+            </div>
+
             <div class="tui-item tui-flex-row">
                 <div class="tui-item-name">
                     TuiButton
@@ -18,7 +36,6 @@
                 </div>
             </div>
 
-
             <div class="tui-item tui-flex-row">
                 <div class="tui-item-name">
                     TuiCheckbox
@@ -28,24 +45,22 @@
                         Checkbox
                     </TuiCheckbox>
                     <TuiCheckbox v-model="checkboxChecked">
-                        Checkbox v-model
+                        Checkbox v-model {{ checkboxChecked }}
                     </TuiCheckbox>
                 </div>
             </div>
 
             <div class="tui-item tui-flex-row">
                 <div class="tui-item-name">
-                    TuiInput
+                    TuiRadio
                 </div>
-                <div class="tui-item-example tui-flex-auto tui-flex-row">
-                    <TuiInput>
-                        Name:
-                    </TuiInput>
-                    <div class="tui-hs-10" />
-                    <TuiInput placeholder="email">
-                        Email:
-                    </TuiInput>
-                    <TuiInput placeholder="width 150px" width="150px" />
+                <div class="tui-item-example tui-flex-auto">
+                    <TuiRadio>
+                        Radio
+                    </TuiRadio>
+                    <TuiRadio v-model="radioChecked">
+                        Radio v-model {{ radioChecked }}
+                    </TuiRadio>
                 </div>
             </div>
 
@@ -72,20 +87,24 @@ const {
     TuiButton,
     TuiCheckbox,
     TuiInput,
-    TuiModal
+    TuiModal,
+    TuiRadio
 } = TUI;
 
 const Demo = {
     data() {
         return {
-            checkboxChecked: true
+            inputText: "",
+            checkboxChecked: true,
+            radioChecked: true
         };
     },
 
     components: {
         TuiButton,
         TuiCheckbox,
-        TuiInput
+        TuiInput,
+        TuiRadio
     },
 
     methods: {
@@ -101,7 +120,7 @@ const Demo = {
                         default: (props) => {
                             return h(TuiButton, {
                                 props: {
-                                    text: "Model Button"
+                                    label: "Model Button"
                                 }
                             });
                         }

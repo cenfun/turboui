@@ -1,7 +1,7 @@
 <template>
     <button :class="className">
-        <template v-if="text">
-            {{ text }}
+        <template v-if="label">
+            {{ label }}
         </template>
         <template v-else>
             <slot />
@@ -15,10 +15,6 @@ export default {
     extends: Base,
 
     props: {
-        text: {
-            type: String,
-            default: ""
-        },
         primary: {
             type: Boolean,
             default: false

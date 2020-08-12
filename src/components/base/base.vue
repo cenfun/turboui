@@ -1,5 +1,43 @@
 <script>
-export default {};
+export default {
+
+    model: {
+        prop: "inputModelValue",
+        event: "model-change"
+    },
+
+    props: {
+        inputModelValue: {
+            type: [String, Boolean, Number],
+            default: null
+        },
+        label: {
+            type: String,
+            default: ""
+        },
+        title: {
+            type: String,
+            default: ""
+        }
+    },
+
+    data() {
+        return {
+            modelValue: this.inputModelValue
+        };
+    },
+
+    watch: {
+        modelValue: function(nv) {
+            this.$emit("model-change", nv);
+        }
+    },
+
+    created() {
+        console.log(this.modelValue);
+    }
+
+};
 </script>
 <style>
 @import "./layout.scss";
