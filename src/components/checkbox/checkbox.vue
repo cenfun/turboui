@@ -99,44 +99,53 @@ export default {
         padding: 0;
         margin: 0;
 
-        &:disabled ~ .tui-checkbox-label {
-            color: #6c757d;
+        &:checked {
+            ~ .tui-checkbox-label {
+                &::before {
+                    color: #fff;
+                    border-color: #0077cf;
+                    background-color: #0077cf;
+                }
+
+                &::after {
+                    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3e%3cpath fill='%23fff' d='M6.564.75l-3.59 3.612-1.538-1.55L0 4.26 2.974 7.25 8 2.193z'/%3e%3c/svg%3e");
+                }
+            }
         }
 
-        &:disabled ~ .tui-checkbox-label::before {
-            background-color: #e9ecef;
+        &:disabled {
+            ~ .tui-checkbox-label {
+                color: #6c757d;
+            }
+
+            ~ .tui-checkbox-label::before {
+                background-color: #e9ecef;
+            }
         }
 
-        &:checked ~ .tui-checkbox-label::before {
-            color: #fff;
-            border-color: #0077cf;
-            background-color: #0077cf;
+        &:focus {
+            ~ .tui-checkbox-label::before {
+                box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+            }
         }
 
-        &:focus ~ .tui-checkbox-label::before {
-            box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+        &:focus:not(:checked) {
+            ~ .tui-checkbox-label::before {
+                border-color: #80bdff;
+            }
         }
 
-        &:focus:not(:checked) ~ .tui-checkbox-label::before {
-            border-color: #80bdff;
+        &:disabled:checked {
+            ~ .tui-checkbox-label::before {
+                background-color: rgba(0, 123, 255, 0.5);
+                border-color: #80bdff;
+            }
         }
 
-        &:not(:disabled):active ~ .tui-checkbox-label::before {
-            color: #fff;
-            background-color: #b3d7ff;
-            border-color: #b3d7ff;
-        }
-
-        &:checked ~ .tui-checkbox-label::after {
-            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3e%3cpath fill='%23fff' d='M6.564.75l-3.59 3.612-1.538-1.55L0 4.26 2.974 7.25 8 2.193z'/%3e%3c/svg%3e");
-        }
-
-        &:not(:checked) ~ .tui-checkbox-label:hover::before {
-            border-color: #888;
-        }
-
-        &:disabled:checked ~ .tui-checkbox-label::before {
-            background-color: rgba(0, 123, 255, 0.5);
+        &:not(:disabled):not(:checked):not(:focus) {
+            ~ .tui-checkbox-label:hover::before {
+                border-color: #888;
+            }
         }
     }
 }

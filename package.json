@@ -7,8 +7,8 @@
     "dist"
   ],
   "scripts": {
-    "preview": "npx webpack preview/src/index.js -o preview/dist/preview.js --display-modules --mode=development",
-    "build": "npx webpack --display-modules"
+    "preview": "node ./scripts/preview.js",
+    "build": "npx webpack"
   },
   "repository": {
     "type": "git",

@@ -109,41 +109,56 @@ export default {
         padding: 0;
         margin: 0;
 
-        &:disabled ~ .tui-radio-label {
-            color: #6c757d;
+        &:checked {
+            ~ .tui-radio-label {
+                &::before {
+                    border-color: #0077cf;
+                }
+
+                &::after {
+                    display: block;
+                }
+            }
         }
 
-        &:disabled ~ .tui-radio-label::before {
-            border-color: #e9ecef;
+        &:disabled {
+            ~ .tui-radio-label {
+                color: #6c757d;
+            }
+
+            ~ .tui-radio-label::before {
+                background-color: #e9ecef;
+            }
         }
 
-        &:checked ~ .tui-radio-label::before {
-            border-color: #0077cf;
+        &:focus {
+            ~ .tui-radio-label::before {
+                box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+            }
         }
 
-        &:focus ~ .tui-radio-label::before {
-            box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+        &:focus:not(:checked) {
+            ~ .tui-radio-label::before {
+                border-color: #80bdff;
+            }
         }
 
-        &:focus:not(:checked) ~ .tui-radio-label::before {
-            border-color: #80bdff;
+        &:disabled:checked {
+            ~ .tui-radio-label {
+                &::before {
+                    border-color: #80bdff;
+                }
+
+                &::after {
+                    background-color: rgba(0, 123, 255, 0.5);
+                }
+            }
         }
 
-        &:not(:disabled):active ~ .tui-radio-label::before {
-            color: #fff;
-            border-color: #b3d7ff;
-        }
-
-        &:not(:checked) ~ .tui-radio-label:hover::before {
-            border-color: #888;
-        }
-
-        &:disabled:checked ~ .tui-radio-label::before {
-            border-color: rgba(0, 123, 255, 0.5);
-        }
-
-        &:checked ~ .tui-radio-label::after {
-            display: block;
+        &:not(:disabled):not(:checked):not(:focus) {
+            ~ .tui-radio-label:hover::before {
+                border-color: #888;
+            }
         }
     }
 }

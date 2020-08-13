@@ -62,7 +62,7 @@
                     <TuiCheckbox disabled>
                         Disabled
                     </TuiCheckbox>
-                    <TuiCheckbox checked disabled>
+                    <TuiCheckbox v-model="checkboxChecked" disabled>
                         Disabled Checked
                     </TuiCheckbox>
                 </div>
