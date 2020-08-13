@@ -119,15 +119,14 @@
     </div>
 </template>
 <script>
-import TUI from "../../src/index.js";
-const {
+import {
     createElement,
     TuiButton,
     TuiCheckbox,
     TuiInput,
     TuiModal,
     TuiRadio
-} = TUI;
+} from "../../src/index.js";
 
 const Demo = {
     data() {
