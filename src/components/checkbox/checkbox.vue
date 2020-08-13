@@ -1,13 +1,13 @@
 <template>
-    <div class="tui tui-checkbox">
+    <div class="lui lui-checkbox">
         <input
             :id="id"
             v-model="modelValue"
-            class="tui-checkbox-input"
+            class="lui-checkbox-input"
             :disabled="disabled"
             type="checkbox"
         >
-        <label class="tui-checkbox-label" :for="id">
+        <label class="lui-checkbox-label" :for="id">
             <template v-if="label">
                 {{ label }}
             </template>
@@ -45,7 +45,7 @@ export default {
 };
 </script>
 <style lang="scss">
-.tui-checkbox {
+.lui-checkbox {
     position: relative;
     display: inline-block;
     padding-left: 22px;
@@ -53,7 +53,7 @@ export default {
     height: 30px;
     line-height: 30px;
 
-    .tui-checkbox-label {
+    .lui-checkbox-label {
         position: relative;
         margin-bottom: 0;
         vertical-align: top;
@@ -89,7 +89,7 @@ export default {
         }
     }
 
-    .tui-checkbox-input {
+    .lui-checkbox-input {
         width: 22px;
         height: 100%;
         position: absolute;
@@ -100,7 +100,7 @@ export default {
         margin: 0;
 
         &:checked {
-            ~ .tui-checkbox-label {
+            ~ .lui-checkbox-label {
                 &::before {
                     color: #fff;
                     border-color: #0077cf;
@@ -114,36 +114,36 @@ export default {
         }
 
         &:disabled {
-            ~ .tui-checkbox-label {
+            ~ .lui-checkbox-label {
                 color: #6c757d;
             }
 
-            ~ .tui-checkbox-label::before {
+            ~ .lui-checkbox-label::before {
                 background-color: #e9ecef;
             }
         }
 
         &:focus {
-            ~ .tui-checkbox-label::before {
+            ~ .lui-checkbox-label::before {
                 box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
             }
         }
 
         &:focus:not(:checked) {
-            ~ .tui-checkbox-label::before {
+            ~ .lui-checkbox-label::before {
                 border-color: #80bdff;
             }
         }
 
         &:disabled:checked {
-            ~ .tui-checkbox-label::before {
+            ~ .lui-checkbox-label::before {
                 background-color: rgba(0, 123, 255, 0.5);
                 border-color: #80bdff;
             }
         }
 
         &:not(:disabled):not(:checked):not(:focus) {
-            ~ .tui-checkbox-label:hover::before {
+            ~ .lui-checkbox-label:hover::before {
                 border-color: #888;
             }
         }

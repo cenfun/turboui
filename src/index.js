@@ -5,28 +5,28 @@ import ce from "./helper/create-element.js";
 export const createElement = ce;
 
 import button from "./components/button/button.vue";
-export const TuiButton = button;
+export const LuiButton = button;
 
 import checkbox from "./components/checkbox/checkbox.vue";
-export const TuiCheckbox = checkbox;
+export const LuiCheckbox = checkbox;
 
 import input from "./components/input/input.vue";
-export const TuiInput = input;
+export const LuiInput = input;
 
 import modal from "./components/modal/modal.vue";
-export const TuiModal = modal;
+export const LuiModal = modal;
 
 import radio from "./components/radio/radio.vue";
-export const TuiRadio = radio;
+export const LuiRadio = radio;
 
 export default {
     Util,
     createElement,
 
-    TuiButton,
-    TuiCheckbox,
-    TuiInput,
-    TuiModal,
-    TuiRadio
+    LuiButton,
+    LuiCheckbox,
+    LuiInput,
+    LuiModal,
+    LuiRadio
 };
 

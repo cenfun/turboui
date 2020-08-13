@@ -49,13 +49,13 @@ export default {
 <style lang="scss">
 @import "./layout.scss";
 
-.tui *,
-.tui *::before,
-.tui *::after {
+.lui *,
+.lui *::before,
+.lui *::after {
     box-sizing: border-box;
 }
 
-.tui {
+.lui {
     font-family: Helvetica, Arial, sans-serif;
     font-size: 14px;
 

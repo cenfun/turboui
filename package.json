@@ -1,8 +1,8 @@
 {
-  "name": "turboui",
+  "name": "lithops-ui",
   "version": "1.0.0",
-  "description": "turboui",
-  "main": "dist/turboui.js",
+  "description": "lithops-ui",
+  "main": "dist/lithops-ui.js",
   "files": [
     "dist"
   ],
@@ -12,13 +12,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/cenfun/turboui.git"
+    "url": "git+https://github.com/cenfun/lithops-ui.git"
   },
   "author": "",
   "bugs": {
-    "url": "https://github.com/cenfun/turboui/issues"
+    "url": "https://github.com/cenfun/lithops-ui/issues"
   },
-  "homepage": "https://github.com/cenfun/turboui#readme",
+  "homepage": "https://github.com/cenfun/lithops-ui#readme",
   "dependencies": {
     "vue": "^2.6.11"
   },

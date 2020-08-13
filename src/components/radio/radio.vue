@@ -1,15 +1,15 @@
 <template>
-    <div class="tui tui-radio">
+    <div class="lui lui-radio">
         <input
             :id="id"
             :checked="modelValue === value"
-            class="tui-radio-input"
+            class="lui-radio-input"
             :disabled="disabled"
             :name="name"
             type="radio"
             @change="onChange"
         >
-        <label class="tui-radio-label" :for="id">
+        <label class="lui-radio-label" :for="id">
             <template v-if="label">
                 {{ label }}
             </template>
@@ -57,7 +57,7 @@ export default {
 };
 </script>
 <style lang="scss">
-.tui-radio {
+.lui-radio {
     position: relative;
     display: inline-block;
     padding-left: 22px;
@@ -65,7 +65,7 @@ export default {
     height: 30px;
     line-height: 30px;
 
-    .tui-radio-label {
+    .lui-radio-label {
         position: relative;
         margin-bottom: 0;
         vertical-align: top;
@@ -99,7 +99,7 @@ export default {
         }
     }
 
-    .tui-radio-input {
+    .lui-radio-input {
         width: 22px;
         height: 100%;
         position: absolute;
@@ -110,7 +110,7 @@ export default {
         margin: 0;
 
         &:checked {
-            ~ .tui-radio-label {
+            ~ .lui-radio-label {
                 &::before {
                     border-color: #0077cf;
                 }
@@ -122,29 +122,29 @@ export default {
         }
 
         &:disabled {
-            ~ .tui-radio-label {
+            ~ .lui-radio-label {
                 color: #6c757d;
             }
 
-            ~ .tui-radio-label::before {
+            ~ .lui-radio-label::before {
                 background-color: #e9ecef;
             }
         }
 
         &:focus {
-            ~ .tui-radio-label::before {
+            ~ .lui-radio-label::before {
                 box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
             }
         }
 
         &:focus:not(:checked) {
-            ~ .tui-radio-label::before {
+            ~ .lui-radio-label::before {
                 border-color: #80bdff;
             }
         }
 
         &:disabled:checked {
-            ~ .tui-radio-label {
+            ~ .lui-radio-label {
                 &::before {
                     border-color: #80bdff;
                 }
@@ -156,7 +156,7 @@ export default {
         }
 
         &:not(:disabled):not(:checked):not(:focus) {
-            ~ .tui-radio-label:hover::before {
+            ~ .lui-radio-label:hover::before {
                 border-color: #888;
             }
         }

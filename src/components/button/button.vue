@@ -24,11 +24,11 @@ export default {
     computed: {
         className: function() {
             const ls = [
-                "tui",
-                "tui-button"
+                "lui",
+                "lui-button"
             ];
             if (this.primary) {
-                ls.push("tui-button-primary");
+                ls.push("lui-button-primary");
             }
             return ls;
         }
@@ -37,7 +37,7 @@ export default {
 };
 </script>
 <style lang="scss">
-.tui-button {
+.lui-button {
     display: inline-block;
     font-weight: 400;
     text-align: center;
@@ -73,7 +73,7 @@ export default {
         border-color: #6c757d;
     }
 
-    &.tui-button-primary {
+    &.lui-button-primary {
         color: #fff;
         background-color: #007bff;
         border-color: #007bff;

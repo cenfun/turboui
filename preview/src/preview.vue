@@ -1,131 +1,131 @@
 <template>
-    <div class="tui-preview tui-flex-column">
-        <div class="tui-preview-header">
-            TUI Preview
+    <div class="lui-preview lui-flex-column">
+        <div class="lui-preview-header">
+            Lithops UI Preview
         </div>
-        <div class="tui-preview-body tui-flex-auto">
-            <div class="tui-item tui-flex-row">
-                <div class="tui-item-name">
-                    TuiInput
+        <div class="lui-preview-body lui-flex-auto">
+            <div class="lui-item lui-flex-row">
+                <div class="lui-item-name">
+                    LuiInput
                 </div>
-                <div class="tui-item-example tui-flex-auto tui-flex-row">
-                    <TuiInput>
+                <div class="lui-item-example lui-flex-auto lui-flex-row">
+                    <LuiInput>
                         Name:
-                    </TuiInput>
-                    <div class="tui-hs-10" />
-                    <TuiInput disabled>
+                    </LuiInput>
+                    <div class="lui-hs-10" />
+                    <LuiInput disabled>
                         Disabled:
-                    </TuiInput>
-                    <div class="tui-hs-10" />
-                    <TuiInput placeholder="email">
+                    </LuiInput>
+                    <div class="lui-hs-10" />
+                    <LuiInput placeholder="email">
                         Email:
-                    </TuiInput>
-                    <TuiInput v-model="inputText" placeholder="width 150px" width="150px" />
-                    <div class="tui-hs-5" />
+                    </LuiInput>
+                    <LuiInput v-model="inputText" placeholder="width 150px" width="150px" />
+                    <div class="lui-hs-5" />
                     <div>{{ inputText }}</div>
                 </div>
             </div>
 
-            <div class="tui-item tui-flex-row">
-                <div class="tui-item-name">
-                    TuiButton
+            <div class="lui-item lui-flex-row">
+                <div class="lui-item-name">
+                    LuiButton
                 </div>
-                <div class="tui-item-example tui-flex-auto tui-flex-row">
-                    <TuiButton>
+                <div class="lui-item-example lui-flex-auto lui-flex-row">
+                    <LuiButton>
                         Button
-                    </TuiButton>
-                    <div class="tui-hs-5" />
-                    <TuiButton disabled>
+                    </LuiButton>
+                    <div class="lui-hs-5" />
+                    <LuiButton disabled>
                         Disabled
-                    </TuiButton>
-                    <div class="tui-hs-5" />
-                    <TuiButton primary>
+                    </LuiButton>
+                    <div class="lui-hs-5" />
+                    <LuiButton primary>
                         Button Primary
-                    </TuiButton>
+                    </LuiButton>
                 </div>
             </div>
 
-            <div class="tui-item tui-flex-row">
-                <div class="tui-item-name">
-                    TuiCheckbox
+            <div class="lui-item lui-flex-row">
+                <div class="lui-item-name">
+                    LuiCheckbox
                 </div>
-                <div class="tui-item-example tui-flex-auto tui-flex-row">
-                    <TuiCheckbox>
+                <div class="lui-item-example lui-flex-auto lui-flex-row">
+                    <LuiCheckbox>
                         Checkbox
-                    </TuiCheckbox>
-                    <div class="tui-hs-5" />
-                    <div class="tui-hs-5" />
-                    <TuiCheckbox v-model="checkboxChecked">
+                    </LuiCheckbox>
+                    <div class="lui-hs-5" />
+                    <div class="lui-hs-5" />
+                    <LuiCheckbox v-model="checkboxChecked">
                         Checkbox v-model {{ checkboxChecked }}
-                    </TuiCheckbox>
+                    </LuiCheckbox>
 
-                    <TuiCheckbox disabled>
+                    <LuiCheckbox disabled>
                         Disabled
-                    </TuiCheckbox>
-                    <TuiCheckbox v-model="checkboxChecked" disabled>
+                    </LuiCheckbox>
+                    <LuiCheckbox v-model="checkboxChecked" disabled>
                         Disabled Checked
-                    </TuiCheckbox>
+                    </LuiCheckbox>
                 </div>
             </div>
 
-            <div class="tui-item tui-flex-row">
-                <div class="tui-item-name">
-                    TuiRadio
+            <div class="lui-item lui-flex-row">
+                <div class="lui-item-name">
+                    LuiRadio
                 </div>
-                <div class="tui-item-example tui-flex-auto tui-flex-row">
-                    <TuiRadio v-model="radioValue" name="radioName" value="1">
+                <div class="lui-item-example lui-flex-auto lui-flex-row">
+                    <LuiRadio v-model="radioValue" name="radioName" value="1">
                         Radio 1
-                    </TuiRadio>
-                    <div class="tui-hs-5" />
-                    <TuiRadio v-model="radioValue" name="radioName" value="2">
+                    </LuiRadio>
+                    <div class="lui-hs-5" />
+                    <LuiRadio v-model="radioValue" name="radioName" value="2">
                         Radio 2
-                    </TuiRadio>
-                    <div class="tui-hs-5" />
+                    </LuiRadio>
+                    <div class="lui-hs-5" />
 
-                    <TuiInput v-model="radioValue">
+                    <LuiInput v-model="radioValue">
                         radioValue:
-                    </TuiInput>
+                    </LuiInput>
 
-                    <div class="tui-hs-5" />
-                    <TuiRadio v-model="radioValue" disabled
+                    <div class="lui-hs-5" />
+                    <LuiRadio v-model="radioValue" disabled
                               name="radioDisabledName"
                               value="1"
                     >
                         Disabled 1
-                    </TuiRadio>
-                    <TuiRadio v-model="radioValue" checked disabled
+                    </LuiRadio>
+                    <LuiRadio v-model="radioValue" checked disabled
                               name="radioDisabledName"
                               value="2"
                     >
                         Disabled 2
-                    </TuiRadio>
+                    </LuiRadio>
                 </div>
             </div>
 
-            <div class="tui-item tui-flex-row">
-                <div class="tui-item-name">
-                    TuiModal
+            <div class="lui-item lui-flex-row">
+                <div class="lui-item-name">
+                    LuiModal
                 </div>
-                <div class="tui-item-example tui-flex-auto tui-flex-row">
-                    <TuiButton @click.native="openModal">
+                <div class="lui-item-example lui-flex-auto lui-flex-row">
+                    <LuiButton @click.native="openModal">
                         Open Modal
-                    </TuiButton>
+                    </LuiButton>
                 </div>
             </div>
         </div>
-        <div class="tui-preview-footer">
-            &copy; TUI
+        <div class="lui-preview-footer">
+            &copy; Lithops UI
         </div>
     </div>
 </template>
 <script>
 import {
     createElement,
-    TuiButton,
-    TuiCheckbox,
-    TuiInput,
-    TuiModal,
-    TuiRadio
+    LuiButton,
+    LuiCheckbox,
+    LuiInput,
+    LuiModal,
+    LuiRadio
 } from "../../src/index.js";
 
 const Demo = {
@@ -138,24 +138,24 @@ const Demo = {
     },
 
     components: {
-        TuiButton,
-        TuiCheckbox,
-        TuiInput,
-        TuiRadio
+        LuiButton,
+        LuiCheckbox,
+        LuiInput,
+        LuiRadio
     },
 
     methods: {
         openModal: function() {
            
 
-            TuiModal.create((h) => {
+            LuiModal.create((h) => {
                 return {
                     props: {
                         title: "Model Title"
                     },
                     scopedSlots: {
                         default: (props) => {
-                            return h(TuiCheckbox, {
+                            return h(LuiCheckbox, {
                                 props: {
                                     label: "Model Checkbox"
                                 }
@@ -185,11 +185,11 @@ body {
     font-size: 14px;
 }
 
-.tui-preview {
+.lui-preview {
     height: 100%;
 }
 
-.tui-preview-header {
+.lui-preview-header {
     padding: 10px 10px;
     font-weight: bold;
     font-size: 16px;
@@ -197,20 +197,20 @@ body {
     border-bottom: 1px solid #ccc;
 }
 
-.tui-preview-body {
+.lui-preview-body {
     padding: 10px 10px;
 }
 
-.tui-item-name {
+.lui-item-name {
     width: 120px;
 }
 
-.tui-item-example {
+.lui-item-example {
     border-left: 1px solid #ccc;
     padding: 5px 0 5px 10px;
 }
 
-.tui-preview-footer {
+.lui-preview-footer {
     padding: 5px 5px;
     background: #eee;
 }

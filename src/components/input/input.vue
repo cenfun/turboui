@@ -1,6 +1,6 @@
 <template>
-    <div class="tui tui-input">
-        <label class="tui-input-label">
+    <div class="lui lui-input">
+        <label class="lui-input-label">
             <template v-if="label">
                 {{ label }}
             </template>
@@ -9,7 +9,7 @@
             </template>
         </label>
         <input v-model="modelValue" v-select
-               class="tui-input-input"
+               class="lui-input-input"
                :disabled="disabled"
                :placeholder="placeholder"
                :style="{width:width}"
@@ -41,18 +41,18 @@ export default {
 };
 </script>
 <style lang="scss">
-.tui-input {
+.lui-input {
     display: flex;
     flex-direction: row;
 
-    .tui-input-label {
+    .lui-input-label {
         height: 25px;
         line-height: 25px;
         padding-right: 5px;
         display: inline-block;
     }
 
-    .tui-input-input {
+    .lui-input-input {
         display: inline-block;
         padding: 2px 5px;
         height: 25px;

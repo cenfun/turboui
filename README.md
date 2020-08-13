@@ -1,8 +1,8 @@
-# Turbo UI
+# Lithops UI
 
 ## Install
 ```sh
-npm i turboui
+npm i lithops-ui
 ```
 ## Usage
 

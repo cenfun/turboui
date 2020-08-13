@@ -1,15 +1,15 @@
 <template>
-    <div class="tui tui-modal">
-        <div class="tui-modal-main tui-flex-column" :style="styleMain">
-            <div class="tui-modal-header">
+    <div class="lui lui-modal">
+        <div class="lui-modal-main lui-flex-column" :style="styleMain">
+            <div class="lui-modal-header">
                 {{ title }}
             </div>
-            <div v-if="spaceAfterHeader" class="tui-vs-10" />
-            <div class="tui-modal-content tui-flex-auto">
+            <div v-if="spaceAfterHeader" class="lui-vs-10" />
+            <div class="lui-modal-content lui-flex-auto">
                 <slot />
             </div>
         </div>
-        <div class="tui-modal-close">
+        <div class="lui-modal-close">
             X
         </div>
     </div>
@@ -53,7 +53,7 @@ const Modal = {
         //close event handler
 
         const bindEvents = (e) => {
-            const $main = this.$el.querySelector(".tui-modal-main");
+            const $main = this.$el.querySelector(".lui-modal-main");
             if ($main === e.target || $main.contains(e.target)) {
                 return;
             }
@@ -83,7 +83,7 @@ Modal.create = (option, container) => {
 export default Modal;
 </script>
 <style lang="scss">
-.tui-modal {
+.lui-modal {
     position: absolute;
     top: 0;
     left: 0;
@@ -93,7 +93,7 @@ export default Modal;
     z-index: 1000;
 }
 
-.tui-modal-close {
+.lui-modal-close {
     position: absolute;
     top: 20%;
     right: 20%;
@@ -109,7 +109,7 @@ export default Modal;
     line-height: 40px;
 }
 
-.tui-modal-main {
+.lui-modal-main {
     background: #fff;
     border-radius: 10px;
     position: absolute;
@@ -118,49 +118,49 @@ export default Modal;
     box-sizing: border-box;
 }
 
-.tui-modal-header {
+.lui-modal-header {
     border-bottom: 2px solid #333;
     padding-bottom: 10px;
     font-size: 18px;
     font-weight: bold;
 }
 
-.tui-modal-content {
+.lui-modal-content {
     width: 100%;
     overflow-y: auto;
     position: relative;
 }
 
-.tui-modal-label {
+.lui-modal-label {
     font-size: 16px;
     font-weight: bold;
     margin-top: 10px;
 }
 
-.tui-modal-item {
+.lui-modal-item {
     padding: 5px 5px;
     border-bottom: 1px solid #f5f5f5;
     position: relative;
 }
 
-.tui-modal-item:hover {
+.lui-modal-item:hover {
     background-color: #f5f5f5;
 }
 
-.tui-modal-line {
+.lui-modal-line {
     word-break: break-word;
     overflow-wrap: break-word;
     word-wrap: break-word;
 }
 
-.tui-modal-tip {
+.lui-modal-tip {
     color: #666;
     word-break: break-all;
     overflow-wrap: break-word;
     word-wrap: break-word;
 }
 
-.tui-modal-arrow {
+.lui-modal-arrow {
     display: inline-block;
     width: 16px;
     height: 16px;
@@ -170,21 +170,21 @@ export default Modal;
     background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='%23333' d='M3,2V11Q3,13,5,13H12.5L10.5,15H12L14.5,12.5L12,10H10.5L12.5,12H5Q4,12,4,11V2z'/%3e%3c/svg%3e");
 }
 
-.tui-modal-table {
+.lui-modal-table {
     margin-top: 5px;
     position: relative;
     border-collapse: collapse;
     width: 100%;
 }
 
-.tui-modal-table th,
-.tui-modal-table td {
+.lui-modal-table th,
+.lui-modal-table td {
     text-align: left;
     border: 1px solid #eee;
     padding: 5px 5px;
 }
 
-.tui-modal-nowrap {
+.lui-modal-nowrap {
     white-space: nowrap;
 }
 </style>

@@ -9,13 +9,13 @@ module.exports = {
         vue: "Vue"
     },
     output: {
-        filename: "turboui.js",
+        filename: "lithops-ui.js",
         umdNamedDefine: true,
-        library: "turboui",
+        library: "lithops-ui",
         libraryTarget: "umd"
     },
     plugins: [new VueLoaderPlugin(), new StatsReportPlugin({
-        title: "Stats Report - Turbo UI",
+        title: "Stats Report - Lithops UI",
         output: ".temp/stats-report.html",
         outputStatsJson: true,
         generateMinifiedSize: true,
@@ -42,7 +42,7 @@ module.exports = {
                     injectType: "singletonStyleTag",
                     attributes: {
                         //Add custom attrs to style for debug
-                        context: "turboui"
+                        context: "lithops-ui"
                     }
                 }
             }, {
