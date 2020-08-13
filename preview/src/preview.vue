@@ -54,12 +54,16 @@
                         Checkbox
                     </TuiCheckbox>
                     <div class="tui-hs-5" />
-                    <TuiCheckbox disabled>
-                        Disabled
-                    </TuiCheckbox>
                     <div class="tui-hs-5" />
                     <TuiCheckbox v-model="checkboxChecked">
                         Checkbox v-model {{ checkboxChecked }}
+                    </TuiCheckbox>
+
+                    <TuiCheckbox disabled>
+                        Disabled
+                    </TuiCheckbox>
+                    <TuiCheckbox checked disabled>
+                        Disabled Checked
                     </TuiCheckbox>
                 </div>
             </div>
@@ -69,15 +73,32 @@
                     TuiRadio
                 </div>
                 <div class="tui-item-example tui-flex-auto tui-flex-row">
-                    <TuiRadio v-model="radioValue" value="1">
+                    <TuiRadio v-model="radioValue" name="radioName" value="1">
                         Radio 1
                     </TuiRadio>
                     <div class="tui-hs-5" />
-                    <TuiRadio v-model="radioValue" value="2">
+                    <TuiRadio v-model="radioValue" name="radioName" value="2">
                         Radio 2
                     </TuiRadio>
                     <div class="tui-hs-5" />
-                    <div>{{ radioValue }}</div>
+
+                    <TuiInput v-model="radioValue">
+                        radioValue:
+                    </TuiInput>
+
+                    <div class="tui-hs-5" />
+                    <TuiRadio v-model="radioValue" disabled
+                              name="radioDisabledName"
+                              value="1"
+                    >
+                        Disabled 1
+                    </TuiRadio>
+                    <TuiRadio v-model="radioValue" checked disabled
+                              name="radioDisabledName"
+                              value="2"
+                    >
+                        Disabled 2
+                    </TuiRadio>
                 </div>
             </div>
 

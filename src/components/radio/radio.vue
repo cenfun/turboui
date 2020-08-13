@@ -2,8 +2,9 @@
     <div class="tui tui-radio">
         <input
             :id="id"
-            :checked="isChecked"
+            :checked="modelValue === value"
             class="tui-radio-input"
+            :disabled="disabled"
             :name="name"
             type="radio"
             @change="onChange"
@@ -19,13 +20,17 @@
     </div>
 </template>
 <script>
-import Base from "../base/base.vue";
+import FormBase from "../base/form-base.vue";
 import Util from "../../helper/util.js";
 export default {
 
-    extends: Base,
+    extends: FormBase,
 
     props: {
+        name: {
+            type: String,
+            default: ""
+        },
         checked: {
             type: Boolean,
             default: false
@@ -38,12 +43,9 @@ export default {
         };
     },
 
-    computed: {
-        isChecked: function() {
-            if (Util.isInvalid(this.modelValue)) {
-                return this.checked;
-            }
-            return this.modelValue === this.value;
+    created() {
+        if (Util.isInvalid(this.modelValue)) {
+            this.modelValue = this.checked;
         }
     },
 
@@ -79,7 +81,6 @@ export default {
             width: 16px;
             height: 16px;
             border-radius: 50%;
-            pointer-events: none;
             content: "";
             background: #fff;
             border: #adb5bd solid 1px;
@@ -87,10 +88,10 @@ export default {
 
         &::after {
             position: absolute;
-            top: 9px;
-            left: -18px;
-            width: 12px;
-            height: 12px;
+            top: 10px;
+            left: -17px;
+            width: 10px;
+            height: 10px;
             border-radius: 50%;
             content: "";
             display: none;

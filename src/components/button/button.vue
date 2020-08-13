@@ -9,16 +9,12 @@
     </button>
 </template>
 <script>
-import Base from "../base/base.vue";
+import FormBase from "../base/form-base.vue";
 export default {
 
-    extends: Base,
+    extends: FormBase,
 
     props: {
-        disabled: {
-            type: Boolean,
-            default: false
-        },
         primary: {
             type: Boolean,
             default: false

@@ -18,14 +18,14 @@
     </div>
 </template>
 <script>
-import Base from "../base/base.vue";
+import FormBase from "../base/form-base.vue";
 import Util from "../../helper/util.js";
 export default {
 
-    extends: Base,
+    extends: FormBase,
 
     props: {
-        disabled: {
+        checked: {
             type: Boolean,
             default: false
         }
@@ -35,6 +35,12 @@ export default {
         return {
             id: Util.token(8, "checkbox-")
         };
+    },
+
+    created() {
+        if (Util.isInvalid(this.modelValue)) {
+            this.modelValue = this.checked;
+        }
     }
 };
 </script>
@@ -62,7 +68,6 @@ export default {
             display: block;
             width: 16px;
             height: 16px;
-            pointer-events: none;
             content: "";
             background-color: #fff;
             border: #adb5bd solid 1px;

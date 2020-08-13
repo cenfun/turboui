@@ -18,7 +18,7 @@
     </div>
 </template>
 <script>
-import Base from "../base/base.vue";
+import FormBase from "../base/form-base.vue";
 import selectOnFocus from "../../helper/select-on-focus.js";
 export default {
 
@@ -26,13 +26,9 @@ export default {
         select: selectOnFocus
     },
 
-    extends: Base,
+    extends: FormBase,
 
     props: {
-        disabled: {
-            type: Boolean,
-            default: false
-        },
         placeholder: {
             type: String,
             default: ""
