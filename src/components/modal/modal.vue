@@ -110,11 +110,11 @@ export default Modal;
 }
 
 .lui-modal-main {
+    position: absolute;
     background: #fff;
     border-radius: 10px;
-    position: absolute;
     overflow: hidden;
-    padding: 20px;
+    padding: 20px 20px;
     box-sizing: border-box;
 }
 
@@ -127,7 +127,6 @@ export default Modal;
 
 .lui-modal-content {
     width: 100%;
-    overflow-y: auto;
     position: relative;
 }
 
