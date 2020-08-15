@@ -13,11 +13,13 @@ module.exports = {
     },
 
     "plugins": [
+        "chain",
         "vue"
     ],
 
     "extends": [
         "eslint:recommended",
+        "plugin:chain/recommended",
         "plugin:vue/recommended"
     ],
 

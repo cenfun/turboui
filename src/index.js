@@ -1,23 +1,22 @@
-import util from "./helper/util.js";
-export const Util = util;
+import Util from "./helper/util.js";
+import createElement from "./helper/create-element.js";
 
-import ce from "./helper/create-element.js";
-export const createElement = ce;
+import LuiButton from "./components/button/button.vue";
+import LuiCheckbox from "./components/checkbox/checkbox.vue";
+import LuiInput from "./components/input/input.vue";
+import LuiModal from "./components/modal/modal.vue";
+import LuiRadio from "./components/radio/radio.vue";
 
-import button from "./components/button/button.vue";
-export const LuiButton = button;
+export {
+    Util,
+    createElement,
 
-import checkbox from "./components/checkbox/checkbox.vue";
-export const LuiCheckbox = checkbox;
-
-import input from "./components/input/input.vue";
-export const LuiInput = input;
-
-import modal from "./components/modal/modal.vue";
-export const LuiModal = modal;
-
-import radio from "./components/radio/radio.vue";
-export const LuiRadio = radio;
+    LuiButton,
+    LuiCheckbox,
+    LuiInput,
+    LuiModal,
+    LuiRadio
+};
 
 export default {
     Util,

@@ -18,8 +18,7 @@ module.exports = {
         title: "Stats Report - Lithops UI",
         output: ".temp/stats-report.html",
         outputStatsJson: true,
-        generateMinifiedSize: true,
-        generateGzipSize: true
+        generateMinifiedAndGzipSize: true
     })],
     module: {
         rules: [{
@@ -35,6 +34,7 @@ module.exports = {
             }
         }, {
             test: /\.(css|scss)$/,
+            sideEffects: true,
             use: [{
                 loader: "style-loader",
                 options: {

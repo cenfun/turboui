@@ -119,7 +119,7 @@
     </div>
 </template>
 <script>
-import {
+import LUI, {
     createElement,
     LuiButton,
     LuiCheckbox,
@@ -127,6 +127,8 @@ import {
     LuiModal,
     LuiRadio
 } from "../../src/index.js";
+
+console.log(LUI);
 
 const Demo = {
     data() {
