@@ -3,6 +3,7 @@
   "version": "1.0.1",
   "description": "lithops-ui",
   "main": "dist/lithops-ui.js",
+  "sideEffects": false,
   "files": [
     "dist"
   ],
