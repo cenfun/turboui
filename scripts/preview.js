@@ -22,7 +22,7 @@ const runCmd = function(command) {
 };
 
 //--display=minimal
-const cmd = "npx webpack preview/src/index.js -o preview/dist/preview.js --mode=development --color";
+const cmd = "npx webpack ./preview/src/index.js -o preview/dist/ --mode=development --color";
 
 runCmd(cmd);
 
