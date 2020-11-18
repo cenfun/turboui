@@ -2,7 +2,7 @@
     <div v-if="show" :class="classList" :style="styleList">
         <transition appear mode="out-in" name="lui-fade">
             <div :class="classBody">
-                <div class="lui-tooltip__text">
+                <div class="lui-tooltip-text">
                     <template v-if="text">
                         {{ text }}
                     </template>
@@ -20,7 +20,7 @@ import { token } from "../../helper/util.js";
 import createElement from "../../helper/create-element.js";
 import {
     getDefaultPositions, getBestPosition, getRect, getElement
-} from "popover-helper";
+} from "../../helper/popover.js";
 
 const Tooltip = {
     props: {
@@ -100,7 +100,7 @@ const Tooltip = {
         classList() {
             return [
                 "lui-tooltip",
-                "lui-tooltip__wrapper"
+                "lui-tooltip-wrapper"
             ];
         },
 
@@ -113,6 +113,7 @@ const Tooltip = {
 
         classBody() {
             const list = [
+                "lui",
                 "lui-tooltip-body",
                 "lui-tooltip",
                 `lui-tooltip--${this.styling}`,
@@ -287,13 +288,13 @@ Tooltip.create = (option, container) => {
 export default Tooltip;
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 $warn-color: #f5c400;
 $pre: "lui-tooltip--";
 $positions: bottom right top left;
 
 .lui-tooltip {
-    &.lui-tooltip__wrapper {
+    &.lui-tooltip-wrapper {
         position: absolute;
         display: block;
         pointer-events: none;

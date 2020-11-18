@@ -49,6 +49,9 @@ export default {
 <style lang="scss">
 @import "./layout.scss";
 
+.lui,
+.lui ::before,
+.lui ::after,
 .lui *,
 .lui *::before,
 .lui *::after {

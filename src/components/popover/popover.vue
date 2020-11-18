@@ -2,9 +2,9 @@
     <div v-if="show" :class="classList" :style="styleList">
         <transition appear mode="out-in" name="lui-fade">
             <div class="lui-popover-body" :style="styleBody">
-                <div v-if="showHeader" class="lui-popover-header lui-popover__header">
+                <div v-if="showHeader" class="lui-popover-header">
                     <slot name="header">
-                        <h2 class="lui-popover-title lui-popover__title" v-text="title" />
+                        <div class="lui-popover-title" v-text="title" />
                     </slot>
                 </div>
                 <div :class="classContent">
@@ -20,7 +20,7 @@ import { token } from "../../helper/util.js";
 import createElement from "../../helper/create-element.js";
 import {
     getDefaultPositions, getBestPosition, getRect, getElement, toRect
-} from "popover-helper";
+} from "../../helper/popover.js";
 
 const Popover = {
     props: {
@@ -119,9 +119,10 @@ const Popover = {
     computed: {
         classList() {
             return [
+                "lui",
                 "lui-popover",
                 this.classId,
-                `lui-popover--${this.info.position}-${this.info.align}`
+                `lui-popover-${this.info.position}-${this.info.align}`
             ];
         },
 
@@ -142,8 +143,7 @@ const Popover = {
 
         classContent() {
             const list = [
-                "lui-popover-content",
-                "lui-popover__content"
+                "lui-popover-content"
             ];
             if (this.contentOverflow) {
                 list.push("lui-popover-content-overflow");
@@ -178,7 +178,6 @@ const Popover = {
         clearTimeout(this.timeout_close);
         this.updateStop();
         this.unbindEvents();
-        this.targetElement = null;
         this.positionInfo = null;
         if (this.$el.parentNode) {
             this.$el.parentNode.removeChild(this.$el);
@@ -341,10 +340,12 @@ const Popover = {
         },
 
         isParentElement(elem) {
-            if (!this.targetElement) {
+
+            const targetElement = getElement(this.target);
+            if (!targetElement) {
                 return false;
             }
-            let parent = this.targetElement.parentNode;
+            let parent = targetElement.parentNode;
             while (parent) {
                 if (parent === elem) {
                     return true;
@@ -379,10 +380,6 @@ const Popover = {
                 return this;
             }
             const containerRect = getRect(this.container || window);
-
-            //target element for bind scroll
-            this.targetElement = getElement(this.target);
-
             const targetRect = getRect(this.target);
 
             //fix for arrow size
@@ -485,7 +482,8 @@ Popover.create = (option, container) => {
 export default Popover;
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
+
 .lui-popover {
     position: absolute;
     visibility: visible;
@@ -498,8 +496,15 @@ export default Popover;
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
     transition: opacity 0.2s linear, visibility 0.2s linear;
 
-    .lui-popover-title {
-        font-weight: bold;
+    .lui-popover-header {
+        padding-bottom: 5px;
+        border-bottom: 1px solid #333;
+        margin-bottom: 5px;
+
+        .lui-popover-title {
+            font-size: 16px;
+            font-weight: bold;
+        }
     }
 
     .lui-popover-content {
@@ -519,6 +524,370 @@ export default Popover;
     .lui-fade-enter,
     .lui-fade-leave-to {
         opacity: 0;
+    }
+
+    &.lui-popover-top-center {
+        border: 1px solid #ccc;
+
+        &::after {
+            border-top: 8px solid #fff;
+            content: '';
+            height: 0;
+            position: absolute;
+            width: 0;
+            top: 100%;
+            margin-top: -1px;
+            border-left: 8px solid transparent;
+            border-right: 8px solid transparent;
+            left: 50%;
+            margin-left: -8px;
+        }
+
+        &::before {
+            border-top: 9px solid #ccc;
+            content: '';
+            height: 0;
+            position: absolute;
+            width: 0;
+            top: 100%;
+            border-left: 9px solid transparent;
+            border-right: 9px solid transparent;
+            left: 50%;
+            margin-left: -9px;
+        }
+    }
+
+    &.lui-popover-top-right {
+        border: 1px solid #ccc;
+        border-bottom-left-radius: 0;
+
+        &::after {
+            border-top: 8px solid #fff;
+            content: '';
+            height: 0;
+            position: absolute;
+            width: 0;
+            top: 100%;
+            margin-top: -1px;
+            border-left: 0;
+            border-right: 8px solid transparent;
+            left: 0;
+        }
+
+        &::before {
+            border-top: 9px solid #ccc;
+            content: '';
+            height: 0;
+            position: absolute;
+            width: 0;
+            top: 100%;
+            border-left: 0;
+            border-right: 9px solid transparent;
+            left: -1px;
+        }
+    }
+
+    &.lui-popover-top-left {
+        border: 1px solid #ccc;
+        border-bottom-right-radius: 0;
+
+        &::after {
+            border-top: 8px solid #fff;
+            content: '';
+            height: 0;
+            position: absolute;
+            width: 0;
+            top: 100%;
+            margin-top: -1px;
+            border-left: 8px solid transparent;
+            border-right: 0;
+            right: 0;
+        }
+
+        &::before {
+            border-top: 9px solid #ccc;
+            content: '';
+            height: 0;
+            position: absolute;
+            width: 0;
+            top: 100%;
+            border-left: 9px solid transparent;
+            border-right: 0;
+            right: -1px;
+        }
+    }
+
+    &.lui-popover-bottom-center {
+        border: 1px solid #ccc;
+
+        &::after {
+            border-bottom: 8px solid #fff;
+            content: '';
+            height: 0;
+            position: absolute;
+            width: 0;
+            bottom: 100%;
+            margin-bottom: -1px;
+            border-left: 8px solid transparent;
+            border-right: 8px solid transparent;
+            left: 50%;
+            margin-left: -8px;
+        }
+
+        &::before {
+            border-bottom: 9px solid #ccc;
+            content: '';
+            height: 0;
+            position: absolute;
+            width: 0;
+            bottom: 100%;
+            border-left: 9px solid transparent;
+            border-right: 9px solid transparent;
+            left: 50%;
+            margin-left: -9px;
+        }
+    }
+
+    &.lui-popover-bottom-right {
+        border: 1px solid #ccc;
+        border-top-left-radius: 0;
+
+        &::after {
+            border-bottom: 8px solid #fff;
+            content: '';
+            height: 0;
+            position: absolute;
+            width: 0;
+            bottom: 100%;
+            margin-bottom: -1px;
+            border-left: 0;
+            border-right: 8px solid transparent;
+            left: 0;
+        }
+
+        &::before {
+            border-bottom: 9px solid #ccc;
+            content: '';
+            height: 0;
+            position: absolute;
+            width: 0;
+            bottom: 100%;
+            border-left: 0;
+            border-right: 9px solid transparent;
+            left: -1px;
+        }
+    }
+
+    &.lui-popover-bottom-left {
+        border: 1px solid #ccc;
+        border-top-right-radius: 0;
+
+        &::after {
+            border-bottom: 8px solid #fff;
+            content: '';
+            height: 0;
+            position: absolute;
+            width: 0;
+            bottom: 100%;
+            margin-bottom: -1px;
+            border-left: 8px solid transparent;
+            border-right: 0;
+            right: 0;
+        }
+
+        &::before {
+            border-bottom: 9px solid #ccc;
+            content: '';
+            height: 0;
+            position: absolute;
+            width: 0;
+            bottom: 100%;
+            border-left: 9px solid transparent;
+            border-right: 0;
+            right: -1px;
+        }
+    }
+
+    &.lui-popover-right-center {
+        border: 1px solid #ccc;
+
+        &::after {
+            border-right: 8px solid #fff;
+            content: '';
+            height: 0;
+            position: absolute;
+            width: 0;
+            right: 100%;
+            margin-right: -1px;
+            border-bottom: 8px solid transparent;
+            border-top: 8px solid transparent;
+            margin-top: -8px;
+            top: 50%;
+        }
+
+        &::before {
+            border-right: 9px solid #ccc;
+            content: '';
+            height: 0;
+            position: absolute;
+            width: 0;
+            right: 100%;
+            border-bottom: 9px solid transparent;
+            border-top: 9px solid transparent;
+            margin-top: -9px;
+            top: 50%;
+        }
+    }
+
+    &.lui-popover-right-top {
+        border: 1px solid #ccc;
+        border-bottom-left-radius: 0;
+
+        &::after {
+            border-right: 8px solid #fff;
+            content: '';
+            height: 0;
+            position: absolute;
+            width: 0;
+            right: 100%;
+            margin-right: -1px;
+            border-bottom: 0;
+            border-top: 8px solid transparent;
+            bottom: 0;
+        }
+
+        &::before {
+            border-right: 9px solid #ccc;
+            content: '';
+            height: 0;
+            position: absolute;
+            width: 0;
+            right: 100%;
+            border-bottom: 0;
+            border-top: 9px solid transparent;
+            bottom: -1px;
+        }
+    }
+
+    &.lui-popover-right-bottom {
+        border: 1px solid #ccc;
+        border-top-left-radius: 0;
+
+        &::after {
+            border-right: 8px solid #fff;
+            content: '';
+            height: 0;
+            position: absolute;
+            width: 0;
+            right: 100%;
+            margin-right: -1px;
+            border-bottom: 8px solid transparent;
+            border-top: 0;
+            top: 0;
+        }
+
+        &::before {
+            border-right: 9px solid #ccc;
+            content: '';
+            height: 0;
+            position: absolute;
+            width: 0;
+            right: 100%;
+            border-bottom: 9px solid transparent;
+            border-top: 0;
+            top: -1px;
+        }
+    }
+
+    &.lui-popover-left-center {
+        border: 1px solid #ccc;
+
+        &::after {
+            border-left: 8px solid #fff;
+            content: '';
+            height: 0;
+            position: absolute;
+            width: 0;
+            left: 100%;
+            margin-left: -1px;
+            border-bottom: 8px solid transparent;
+            border-top: 8px solid transparent;
+            margin-top: -8px;
+            top: 50%;
+        }
+
+        &::before {
+            border-left: 9px solid #ccc;
+            content: '';
+            height: 0;
+            position: absolute;
+            width: 0;
+            left: 100%;
+            border-bottom: 9px solid transparent;
+            border-top: 9px solid transparent;
+            margin-top: -9px;
+            top: 50%;
+        }
+    }
+
+    &.lui-popover-left-top {
+        border: 1px solid #ccc;
+        border-bottom-right-radius: 0;
+
+        &::after {
+            border-left: 8px solid #fff;
+            content: '';
+            height: 0;
+            position: absolute;
+            width: 0;
+            left: 100%;
+            margin-left: -1px;
+            border-bottom: 0;
+            border-top: 8px solid transparent;
+            bottom: 0;
+        }
+
+        &::before {
+            border-left: 9px solid #ccc;
+            content: '';
+            height: 0;
+            position: absolute;
+            width: 0;
+            left: 100%;
+            border-bottom: 0;
+            border-top: 9px solid transparent;
+            bottom: -1px;
+        }
+    }
+
+    &.lui-popover-left-bottom {
+        border: 1px solid #ccc;
+        border-top-right-radius: 0;
+
+        &::after {
+            border-left: 8px solid #fff;
+            content: '';
+            height: 0;
+            position: absolute;
+            width: 0;
+            left: 100%;
+            margin-left: -1px;
+            border-bottom: 8px solid transparent;
+            border-top: 0;
+            top: 0;
+        }
+
+        &::before {
+            border-left: 9px solid #ccc;
+            content: '';
+            height: 0;
+            position: absolute;
+            width: 0;
+            left: 100%;
+            border-bottom: 9px solid transparent;
+            border-top: 0;
+            top: -1px;
+        }
     }
 }
 </style>
