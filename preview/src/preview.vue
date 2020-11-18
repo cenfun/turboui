@@ -135,16 +135,13 @@
                                 </g>
                             </defs>
                         
-                            <use style="transform: translateX(9px);" xlink:href="#lui-arrow-corner" />
-                            <use style="transform: translateX(18px);" xlink:href="#lui-arrow-center" />
+                            <use style="transform: translate(9px, 0);" xlink:href="#lui-arrow-corner" />
+                            <use style="transform: translate(18px, 0);" xlink:href="#lui-arrow-center" />
                             <use style="transform: translateX(45px) rotateY(180deg);" xlink:href="#lui-arrow-corner" />
-
                             <use style="transform: translate(54px, 9px) rotate(90deg);" xlink:href="#lui-arrow-center" />
-
                             <use style="transform: translate(45px, 36px) rotate(180deg);" xlink:href="#lui-arrow-corner" />
                             <use style="transform: translate(36px, 36px) rotate(180deg);" xlink:href="#lui-arrow-center" />
                             <use style="transform: translate(9px, 36px) rotateX(180deg);" xlink:href="#lui-arrow-corner" />
-
                             <use style="transform: translate(0, 27px) rotate(-90deg);" xlink:href="#lui-arrow-center" />
                         </svg>
                     </div>
