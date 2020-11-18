@@ -112,6 +112,28 @@
                     </LuiButton>
                 </div>
             </div>
+
+            <div class="lui-item lui-flex-row">
+                <div class="lui-item-name">
+                    LuiPopover
+                </div>
+                <div class="lui-item-example lui-flex-auto lui-flex-row">
+                    <LuiButton @click.native="openPopover">
+                        Open Popover
+                    </LuiButton>
+                </div>
+            </div>
+
+            <div class="lui-item lui-flex-row">
+                <div class="lui-item-name">
+                    LuiTooltip
+                </div>
+                <div class="lui-item-example lui-flex-auto lui-flex-row">
+                    <LuiButton tooltip="This is LuiTooltip">
+                        Hover Tooltip
+                    </LuiButton>
+                </div>
+            </div>
         </div>
         <div class="lui-preview-footer">
             &copy; Lithops UI
@@ -125,7 +147,9 @@ import LUI, {
     LuiCheckbox,
     LuiInput,
     LuiModal,
-    LuiRadio
+    LuiPopover,
+    LuiRadio,
+    LuiTooltip
 } from "../../src/index.js";
 
 console.log(LUI);
@@ -146,10 +170,24 @@ const Demo = {
         LuiRadio
     },
 
+    mounted() {
+        const tooltips = Array.prototype.slice.call(document.querySelectorAll("[tooltip]"));
+        const self = this;
+        tooltips.forEach(item => {
+            if (!item) {
+                return;
+            }
+            item.addEventListener("mouseenter", function() {
+                self.showTooltip(this);
+            });
+            item.addEventListener("mouseleave", function() {
+                self.hideTooltip(this);
+            });
+        });
+    },
+
     methods: {
         openModal: function() {
-           
-
             LuiModal.create((h) => {
                 return {
                     props: {
@@ -166,7 +204,45 @@ const Demo = {
                     }
                 };
             });
+        },
 
+        openPopover: function() {
+            LuiPopover.create((h) => {
+                return {
+                    props: {
+                        title: "Popover Title"
+                    },
+                    scopedSlots: {
+                        default: (props) => {
+                            return h(LuiCheckbox, {
+                                props: {
+                                    label: "Popover Checkbox"
+                                }
+                            });
+                        }
+                    }
+                };
+            });
+        },
+
+        showTooltip: function(elem) {
+            if (!elem) {
+                return;
+            }
+            elem.$tooltip = LuiTooltip.create((h) => {
+                return {
+                    props: {
+                        title: elem.getAttribute("tooltip")
+                    }
+                };
+            });
+        },
+
+        hideTooltip: function(elem) {
+            if (elem && elem.$tooltip) {
+                elem.$tooltip.$destroy();
+                elem.$tooltip = null;
+            }
         }
     }
 };

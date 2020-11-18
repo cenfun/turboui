@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import Base from "../base/base.vue";
+import Base from "../../base/base.vue";
 import createElement from "../../helper/create-element.js";
 
 const Modal = {

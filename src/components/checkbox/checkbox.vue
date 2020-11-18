@@ -18,7 +18,7 @@
     </div>
 </template>
 <script>
-import FormBase from "../base/form-base.vue";
+import FormBase from "../../base/form-base.vue";
 import Util from "../../helper/util.js";
 export default {
 

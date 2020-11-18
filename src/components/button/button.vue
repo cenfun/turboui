@@ -9,7 +9,7 @@
     </button>
 </template>
 <script>
-import FormBase from "../base/form-base.vue";
+import FormBase from "../../base/form-base.vue";
 export default {
 
     extends: FormBase,

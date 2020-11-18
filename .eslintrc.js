@@ -37,6 +37,12 @@ module.exports = {
     "rules": {
         "arrow-spacing": "error",
         "block-spacing": "error",
+        "chain/dependencies": ["error", {
+            "noSelfPackage": true,
+            "noUppercase": true,
+            "noUnlisted": true,
+            "noDevDependenciesDir": []
+        }],
         "comma-dangle": ["error", "never"],
         "comma-spacing": ["error", {
             "after": true,
