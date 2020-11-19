@@ -121,6 +121,9 @@
                     <LuiButton @click.native="openPopover">
                         Open Popover
                     </LuiButton>
+                    <LuiButton style="position: absolute; right: 0;" @click.native="openPopover">
+                        Open Popover
+                    </LuiButton>
 
                     <div style="background: #f5f5f5; margin-top: 10px;">
                         <div class="lui-popup-arrow-example" />
@@ -277,7 +280,13 @@
                     LuiTooltip
                 </div>
                 <div class="lui-item-example lui-flex-auto lui-flex-row">
-                    <LuiButton tooltip="This is LuiTooltip">
+                    <LuiButton tooltip="This is LuiTooltip left This is LuiTooltip left">
+                        Hover Tooltip
+                    </LuiButton>
+                    <LuiButton style="position: absolute; right: 0;" tooltip="This is LuiTooltip right">
+                        Hover Tooltip
+                    </LuiButton>
+                    <LuiButton style="position: absolute; left: 50%;" tooltip="This is LuiTooltip center">
                         Hover Tooltip
                     </LuiButton>
                 </div>
@@ -323,9 +332,9 @@ const Demo = {
         const tooltips = Array.prototype.slice.call(document.querySelectorAll("[tooltip]"));
         const self = this;
         tooltips.forEach(item => {
-            if (!item) {
-                return;
-            }
+            item.addEventListener("click", function() {
+                self.pinTooltip(this);
+            });
             item.addEventListener("mouseenter", function() {
                 self.showTooltip(this);
             });
@@ -384,23 +393,36 @@ const Demo = {
         },
 
         showTooltip: function(elem) {
-            if (!elem) {
+            this.hideTooltip(elem);
+            if (elem.$tooltip) {
                 return;
             }
             elem.$tooltip = LuiTooltip.create((h) => {
                 return {
                     props: {
-                        title: elem.getAttribute("tooltip")
+                        target: elem,
+                        text: elem.getAttribute("tooltip")
                     }
                 };
             });
         },
 
         hideTooltip: function(elem) {
-            if (elem && elem.$tooltip) {
-                elem.$tooltip.$destroy();
-                elem.$tooltip = null;
+            if (!elem.$tooltip) {
+                return;
             }
+            if (elem.$tooltip.disabled) {
+                return;
+            }
+            elem.$tooltip.$destroy();
+            elem.$tooltip = null;
+        },
+
+        pinTooltip: function(elem) {
+            if (!elem.$tooltip) {
+                return;
+            }
+            elem.$tooltip.disabled = !elem.$tooltip.disabled;
         }
     }
 };
@@ -435,10 +457,16 @@ body {
 
 .lui-preview-body {
     padding: 10px 10px;
+    overflow-y: auto;
+}
+
+.lui-item {
+    border-bottom: 1px dotted #ccc;
+    padding: 5px 0;
 }
 
 .lui-item-name {
-    width: 120px;
+    width: 100px;
 }
 
 .lui-item-example {

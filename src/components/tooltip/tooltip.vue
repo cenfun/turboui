@@ -1,15 +1,13 @@
 <template>
     <div v-if="show" :class="classList" :style="styleList">
         <transition appear mode="out-in" name="lui-fade">
-            <div :class="classBody">
-                <div class="lui-tooltip-text">
-                    <template v-if="text">
-                        {{ text }}
-                    </template>
-                    <template v-else>
-                        <slot />
-                    </template>
-                </div>
+            <div class="lui-tooltip-text">
+                <template v-if="text">
+                    {{ text }}
+                </template>
+                <template v-else>
+                    <slot />
+                </template>
             </div>
         </transition>
     </div>
@@ -29,20 +27,9 @@ const Tooltip = {
             default: ""
         },
 
-        size: {
-            type: String,
-            default: "medium",
-            validator(value) {
-                return ["small", "medium", "large"].indexOf(value) > -1;
-            }
-        },
-
-        width: {
-            type: String,
-            default: "m",
-            validator(value) {
-                return ["s", "m", "l", "xl"].indexOf(value) > -1;
-            }
+        maxWidth: {
+            type: Number,
+            default: 320
         },
 
         styling: {
@@ -71,34 +58,22 @@ const Tooltip = {
     computed: {
         classList() {
             return [
+                "lui",
+                "lui-popup",
+                `lui-popup-${this.position}-${this.align}`,
                 "lui-tooltip",
-                "lui-tooltip-wrapper"
+                `lui-tooltip-${this.size}`,
+                `lui-tooltip-${this.styling}`,
+                this.classId
             ];
         },
 
         styleList() {
             return {
                 top: `${this.top}px`,
-                left: `${this.left}px`
+                left: `${this.left}px`,
+                "max-width": `${this.maxWidth}px`
             };
-        },
-
-        classBody() {
-            const list = [
-                "lui",
-                "lui-popup",
-                `lui-popup-${this.position}-${this.align}`,
-                "lui-tooltip-body",
-                "lui-tooltip",
-                `lui-tooltip-${this.styling}`,
-                `lui-tooltip-${this.size}`,
-                `lui-tooltip-width-${this.width}`,
-                this.classId
-            ];
-            if (this.styling === "warn") {
-                list.splice(2, 0, "lui-tooltip-default");
-            }
-            return list;
         }
 
     },
@@ -260,62 +235,25 @@ export default Tooltip;
 </script>
 
 <style lang="scss">
-$warn-color: #f5c400;
-$pre: "lui-tooltip-";
-$positions: bottom right top left;
-
 .lui-tooltip {
-    &.lui-tooltip-wrapper {
-        position: absolute;
-        display: block;
-        pointer-events: none;
-        z-index: 2000;
+    //pointer-events: none;
+    position: absolute;
+    visibility: visible;
+    z-index: 1000;
+    opacity: 1;
+    margin: 0;
+    box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.2);
+    transition: opacity 0.2s linear, visibility 0.2s linear;
 
-        .lui-tooltip-body {
-            visibility: visible;
-            opacity: 1;
-            margin: 0;
-            transform: none;
-            right: inherit;
-            bottom: inherit;
-            font-size: 14px;
-            //https://developer.mozilla.org/zh-CN/docs/Web/CSS/word-break
-            word-break: break-word;
-            overflow-wrap: break-word;
-            //IE https://caniuse.com/#feat=wordwrap
-            word-wrap: break-word;
-        }
-    }
-
-    .#{$pre}warn {
-        background-color: $warn-color;
-        border-color: $warn-color;
-        color: #1e1e1e;
+    .lui-tooltip-text {
+        padding: 10px 10px;
+        display: inline-block;
         font-size: 14px;
-
-        @each $p in $positions {
-            @if $p == right or $p == left {
-                &.#{$pre}#{$p}-top::after,
-                &.#{$pre}#{$p}-center::after,
-                &.#{$pre}#{$p}-bottom::after,
-                &.#{$pre}#{$p}-top::before,
-                &.#{$pre}#{$p}-center::before,
-                &.#{$pre}#{$p}-bottom::before {
-                    border-#{$p}-color: $warn-color;
-                }
-            }
-
-            @else {
-                &.#{$pre}#{$p}-left::after,
-                &.#{$pre}#{$p}-center::after,
-                &.#{$pre}#{$p}-right::after,
-                &.#{$pre}#{$p}-left::before,
-                &.#{$pre}#{$p}-center::before,
-                &.#{$pre}#{$p}-right::before {
-                    border-#{$p}-color: $warn-color;
-                }
-            }
-        }
+        //https://developer.mozilla.org/zh-CN/docs/Web/CSS/word-break
+        word-break: break-word;
+        overflow-wrap: break-word;
+        //IE https://caniuse.com/#feat=wordwrap
+        word-wrap: break-word;
     }
 
     .lui-fade-enter-active,
