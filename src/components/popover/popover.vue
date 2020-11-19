@@ -16,31 +16,13 @@
 </template>
 
 <script>
+import Popup from "../popup/popup.vue";
 import { token } from "../../helper/util.js";
 import createElement from "../../helper/create-element.js";
-import {
-    getDefaultPositions, getBestPosition, getRect, getElement, toRect
-} from "../../helper/popover.js";
 
 const Popover = {
+    extends: Popup,
     props: {
-
-        target: {
-            type: [String, Object],
-            default: ""
-        },
-
-        bindTarget: {
-            type: Boolean,
-            default: false
-        },
-
-        positions: {
-            type: [String, Array],
-            default: () => {
-                return getDefaultPositions();
-            }
-        },
 
         title: {
             type: String,
@@ -82,16 +64,6 @@ const Popover = {
             default: 800
         },
 
-        attachToBody: {
-            type: Boolean,
-            default: true
-        },
-
-        container: {
-            type: [String, Object, Document, Window],
-            default: ""
-        },
-
         visible: {
             type: [Boolean, String],
             default: ""
@@ -120,9 +92,10 @@ const Popover = {
         classList() {
             return [
                 "lui",
+                "lui-popup",
+                `lui-popup-${this.info.position}-${this.info.align}`,
                 "lui-popover",
-                this.classId,
-                `lui-popover-${this.info.position}-${this.info.align}`
+                this.classId
             ];
         },
 
@@ -223,7 +196,7 @@ const Popover = {
             if (!this.bindTarget) {
                 return;
             }
-            const $target = getElement(this.target);
+            const $target = this.getElement(this.target);
             if ($target) {
                 this.$target = $target;
                 this.$target.addEventListener("click", this.openHandler);
@@ -341,7 +314,7 @@ const Popover = {
 
         isParentElement(elem) {
 
-            const targetElement = getElement(this.target);
+            const targetElement = this.getElement(this.target);
             if (!targetElement) {
                 return false;
             }
@@ -379,8 +352,8 @@ const Popover = {
             if (!this.show) {
                 return this;
             }
-            const containerRect = getRect(this.container || window);
-            const targetRect = getRect(this.target);
+            const containerRect = this.getRect(this.container || window);
+            const targetRect = this.getRect(this.target);
 
             //fix for arrow size
             const arrowSize = 10;
@@ -391,11 +364,11 @@ const Popover = {
 
             this.updateContentHeight();
 
-            const rect = getRect(`.${this.classId}`);
+            const rect = this.getRect(`.${this.classId}`);
 
             //console.log(containerRect, targetRect, rect);
             
-            this.positionInfo = getBestPosition(
+            this.positionInfo = this.getBestPosition(
                 containerRect,
                 targetRect,
                 rect,
@@ -428,7 +401,7 @@ const Popover = {
             elem.style.height = "auto";
             
             const br = elem.getBoundingClientRect();
-            const rect = toRect(br);
+            const rect = this.toRect(br);
             const ch = rect.height;
 
             this.contentOverflow = false;
@@ -474,7 +447,6 @@ const Popover = {
     }
 };
 
-Popover.getDefaultPositions = getDefaultPositions;
 Popover.create = (option, container) => {
     return createElement(Popover, option, container);
 };
@@ -491,9 +463,7 @@ export default Popover;
     opacity: 1;
     margin: 0;
     padding: 16px 16px;
-    background-color: #fff;
-    border-radius: 6px;
-    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+    box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.2);
     transition: opacity 0.2s linear, visibility 0.2s linear;
 
     .lui-popover-header {
@@ -524,370 +494,6 @@ export default Popover;
     .lui-fade-enter,
     .lui-fade-leave-to {
         opacity: 0;
-    }
-
-    &.lui-popover-top-center {
-        border: 1px solid #ccc;
-
-        &::after {
-            border-top: 8px solid #fff;
-            content: '';
-            height: 0;
-            position: absolute;
-            width: 0;
-            top: 100%;
-            margin-top: -1px;
-            border-left: 8px solid transparent;
-            border-right: 8px solid transparent;
-            left: 50%;
-            margin-left: -8px;
-        }
-
-        &::before {
-            border-top: 9px solid #ccc;
-            content: '';
-            height: 0;
-            position: absolute;
-            width: 0;
-            top: 100%;
-            border-left: 9px solid transparent;
-            border-right: 9px solid transparent;
-            left: 50%;
-            margin-left: -9px;
-        }
-    }
-
-    &.lui-popover-top-right {
-        border: 1px solid #ccc;
-        border-bottom-left-radius: 0;
-
-        &::after {
-            border-top: 8px solid #fff;
-            content: '';
-            height: 0;
-            position: absolute;
-            width: 0;
-            top: 100%;
-            margin-top: -1px;
-            border-left: 0;
-            border-right: 8px solid transparent;
-            left: 0;
-        }
-
-        &::before {
-            border-top: 9px solid #ccc;
-            content: '';
-            height: 0;
-            position: absolute;
-            width: 0;
-            top: 100%;
-            border-left: 0;
-            border-right: 9px solid transparent;
-            left: -1px;
-        }
-    }
-
-    &.lui-popover-top-left {
-        border: 1px solid #ccc;
-        border-bottom-right-radius: 0;
-
-        &::after {
-            border-top: 8px solid #fff;
-            content: '';
-            height: 0;
-            position: absolute;
-            width: 0;
-            top: 100%;
-            margin-top: -1px;
-            border-left: 8px solid transparent;
-            border-right: 0;
-            right: 0;
-        }
-
-        &::before {
-            border-top: 9px solid #ccc;
-            content: '';
-            height: 0;
-            position: absolute;
-            width: 0;
-            top: 100%;
-            border-left: 9px solid transparent;
-            border-right: 0;
-            right: -1px;
-        }
-    }
-
-    &.lui-popover-bottom-center {
-        border: 1px solid #ccc;
-
-        &::after {
-            border-bottom: 8px solid #fff;
-            content: '';
-            height: 0;
-            position: absolute;
-            width: 0;
-            bottom: 100%;
-            margin-bottom: -1px;
-            border-left: 8px solid transparent;
-            border-right: 8px solid transparent;
-            left: 50%;
-            margin-left: -8px;
-        }
-
-        &::before {
-            border-bottom: 9px solid #ccc;
-            content: '';
-            height: 0;
-            position: absolute;
-            width: 0;
-            bottom: 100%;
-            border-left: 9px solid transparent;
-            border-right: 9px solid transparent;
-            left: 50%;
-            margin-left: -9px;
-        }
-    }
-
-    &.lui-popover-bottom-right {
-        border: 1px solid #ccc;
-        border-top-left-radius: 0;
-
-        &::after {
-            border-bottom: 8px solid #fff;
-            content: '';
-            height: 0;
-            position: absolute;
-            width: 0;
-            bottom: 100%;
-            margin-bottom: -1px;
-            border-left: 0;
-            border-right: 8px solid transparent;
-            left: 0;
-        }
-
-        &::before {
-            border-bottom: 9px solid #ccc;
-            content: '';
-            height: 0;
-            position: absolute;
-            width: 0;
-            bottom: 100%;
-            border-left: 0;
-            border-right: 9px solid transparent;
-            left: -1px;
-        }
-    }
-
-    &.lui-popover-bottom-left {
-        border: 1px solid #ccc;
-        border-top-right-radius: 0;
-
-        &::after {
-            border-bottom: 8px solid #fff;
-            content: '';
-            height: 0;
-            position: absolute;
-            width: 0;
-            bottom: 100%;
-            margin-bottom: -1px;
-            border-left: 8px solid transparent;
-            border-right: 0;
-            right: 0;
-        }
-
-        &::before {
-            border-bottom: 9px solid #ccc;
-            content: '';
-            height: 0;
-            position: absolute;
-            width: 0;
-            bottom: 100%;
-            border-left: 9px solid transparent;
-            border-right: 0;
-            right: -1px;
-        }
-    }
-
-    &.lui-popover-right-center {
-        border: 1px solid #ccc;
-
-        &::after {
-            border-right: 8px solid #fff;
-            content: '';
-            height: 0;
-            position: absolute;
-            width: 0;
-            right: 100%;
-            margin-right: -1px;
-            border-bottom: 8px solid transparent;
-            border-top: 8px solid transparent;
-            margin-top: -8px;
-            top: 50%;
-        }
-
-        &::before {
-            border-right: 9px solid #ccc;
-            content: '';
-            height: 0;
-            position: absolute;
-            width: 0;
-            right: 100%;
-            border-bottom: 9px solid transparent;
-            border-top: 9px solid transparent;
-            margin-top: -9px;
-            top: 50%;
-        }
-    }
-
-    &.lui-popover-right-top {
-        border: 1px solid #ccc;
-        border-bottom-left-radius: 0;
-
-        &::after {
-            border-right: 8px solid #fff;
-            content: '';
-            height: 0;
-            position: absolute;
-            width: 0;
-            right: 100%;
-            margin-right: -1px;
-            border-bottom: 0;
-            border-top: 8px solid transparent;
-            bottom: 0;
-        }
-
-        &::before {
-            border-right: 9px solid #ccc;
-            content: '';
-            height: 0;
-            position: absolute;
-            width: 0;
-            right: 100%;
-            border-bottom: 0;
-            border-top: 9px solid transparent;
-            bottom: -1px;
-        }
-    }
-
-    &.lui-popover-right-bottom {
-        border: 1px solid #ccc;
-        border-top-left-radius: 0;
-
-        &::after {
-            border-right: 8px solid #fff;
-            content: '';
-            height: 0;
-            position: absolute;
-            width: 0;
-            right: 100%;
-            margin-right: -1px;
-            border-bottom: 8px solid transparent;
-            border-top: 0;
-            top: 0;
-        }
-
-        &::before {
-            border-right: 9px solid #ccc;
-            content: '';
-            height: 0;
-            position: absolute;
-            width: 0;
-            right: 100%;
-            border-bottom: 9px solid transparent;
-            border-top: 0;
-            top: -1px;
-        }
-    }
-
-    &.lui-popover-left-center {
-        border: 1px solid #ccc;
-
-        &::after {
-            border-left: 8px solid #fff;
-            content: '';
-            height: 0;
-            position: absolute;
-            width: 0;
-            left: 100%;
-            margin-left: -1px;
-            border-bottom: 8px solid transparent;
-            border-top: 8px solid transparent;
-            margin-top: -8px;
-            top: 50%;
-        }
-
-        &::before {
-            border-left: 9px solid #ccc;
-            content: '';
-            height: 0;
-            position: absolute;
-            width: 0;
-            left: 100%;
-            border-bottom: 9px solid transparent;
-            border-top: 9px solid transparent;
-            margin-top: -9px;
-            top: 50%;
-        }
-    }
-
-    &.lui-popover-left-top {
-        border: 1px solid #ccc;
-        border-bottom-right-radius: 0;
-
-        &::after {
-            border-left: 8px solid #fff;
-            content: '';
-            height: 0;
-            position: absolute;
-            width: 0;
-            left: 100%;
-            margin-left: -1px;
-            border-bottom: 0;
-            border-top: 8px solid transparent;
-            bottom: 0;
-        }
-
-        &::before {
-            border-left: 9px solid #ccc;
-            content: '';
-            height: 0;
-            position: absolute;
-            width: 0;
-            left: 100%;
-            border-bottom: 0;
-            border-top: 9px solid transparent;
-            bottom: -1px;
-        }
-    }
-
-    &.lui-popover-left-bottom {
-        border: 1px solid #ccc;
-        border-top-right-radius: 0;
-
-        &::after {
-            border-left: 8px solid #fff;
-            content: '';
-            height: 0;
-            position: absolute;
-            width: 0;
-            left: 100%;
-            margin-left: -1px;
-            border-bottom: 8px solid transparent;
-            border-top: 0;
-            top: 0;
-        }
-
-        &::before {
-            border-left: 9px solid #ccc;
-            content: '';
-            height: 0;
-            position: absolute;
-            width: 0;
-            left: 100%;
-            border-bottom: 9px solid transparent;
-            border-top: 0;
-            top: -1px;
-        }
     }
 }
 </style>

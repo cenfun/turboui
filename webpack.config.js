@@ -8,6 +8,8 @@ module.exports = {
     externals: {
         vue: "Vue"
     },
+    cache: true,
+    target: ["web", "es5"],
     output: {
         filename: "lithops-ui.js",
         umdNamedDefine: true,

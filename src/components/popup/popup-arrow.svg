@@ -1,0 +1,32 @@
+<svg width="54" height="54" version="1.1"
+    xmlns="http://www.w3.org/2000/svg"
+    xmlns:xlink="http://www.w3.org/1999/xlink">
+    <defs>
+        <g id="lui-arrow-left">
+            <path d="M0,9 v-9 l9,9 h-9" fill="#fff" />
+            <path d="M0,9 v-9 l9,9 h-1.142 l-7,-7 v7" fill="#bcbcbc" />
+        </g>
+        <g id="lui-arrow-center">
+            <path d="M0,9 l9,-9 l9,9 h-18" fill="#fff" />
+            <path d="M0,9 l9,-9 l9,9 h-1 l-8,-8 l-8,8" fill="#bcbcbc" />
+        </g>
+        <g id="lui-arrow-right">
+            <path d="M0,9 l9,-9 v9 h-9" fill="#fff" />
+            <path d="M0,9 l9,-9 v9 h-0.858 v-7 l-7,7 " fill="#bcbcbc" />
+        </g>
+    </defs>
+    <g>
+        <use transform="translate(9, 0)" xlink:href="#lui-arrow-left" />
+        <use transform="translate(18, 0)" xlink:href="#lui-arrow-center" />
+        <use transform="translate(36, 0)" xlink:href="#lui-arrow-right" />
+        <use transform="translate(54, 9) rotate(90)" xlink:href="#lui-arrow-left" />
+        <use transform="translate(54, 18) rotate(90)" xlink:href="#lui-arrow-center" />
+        <use transform="translate(54, 36) rotate(90)" xlink:href="#lui-arrow-right" />
+        <use transform="translate(45, 54) rotate(180)" xlink:href="#lui-arrow-left" />
+        <use transform="translate(36, 54) rotate(180)" xlink:href="#lui-arrow-center" />
+        <use transform="translate(18, 54) rotate(180)" xlink:href="#lui-arrow-right" />
+        <use transform="translate(0, 45) rotate(-90)" xlink:href="#lui-arrow-left" />
+        <use transform="translate(0, 36) rotate(-90)" xlink:href="#lui-arrow-center" />
+        <use transform="translate(0, 18) rotate(-90)" xlink:href="#lui-arrow-right" />
+    </g>
+</svg>

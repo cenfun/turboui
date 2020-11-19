@@ -33,7 +33,6 @@
     "eslint-plugin-chain": "^1.0.2",
     "eslint-plugin-vue": "^7.1.0",
     "file-loader": "^6.2.0",
-    "popover-helper": "^1.0.0",
     "sass": "^1.29.0",
     "sass-loader": "^10.1.0",
     "style-loader": "^2.0.0",

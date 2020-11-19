@@ -123,37 +123,17 @@
                     </LuiButton>
 
                     <div style="background: #f5f5f5; margin-top: 10px;">
-                        <svg viewBox="0,0,54,36" width="54" xmlns="http://www.w3.org/2000/svg">
-                            <defs>
-                                <g id="lui-arrow-corner">
-                                    <path d="M0,9 v-9 l9,9 h-9" fill="#fff" />
-                                    <path d="M0,9 v-9 l9,9 h-1.12 l-7,-7 v7" fill="#999" />
-                                </g>
-                                <g id="lui-arrow-center">
-                                    <path d="M0,9 l9,-9 l9,9 h-18" fill="#fff" />
-                                    <path d="M0,9 l9,-9 l9,9 h-1 l-8,-8 l-8,8" fill="#999" />
-                                </g>
-                            </defs>
-                        
-                            <use style="transform: translate(9px, 0);" xlink:href="#lui-arrow-corner" />
-                            <use style="transform: translate(18px, 0);" xlink:href="#lui-arrow-center" />
-                            <use style="transform: translateX(45px) rotateY(180deg);" xlink:href="#lui-arrow-corner" />
-                            <use style="transform: translate(54px, 9px) rotate(90deg);" xlink:href="#lui-arrow-center" />
-                            <use style="transform: translate(45px, 36px) rotate(180deg);" xlink:href="#lui-arrow-corner" />
-                            <use style="transform: translate(36px, 36px) rotate(180deg);" xlink:href="#lui-arrow-center" />
-                            <use style="transform: translate(9px, 36px) rotateX(180deg);" xlink:href="#lui-arrow-corner" />
-                            <use style="transform: translate(0, 27px) rotate(-90deg);" xlink:href="#lui-arrow-center" />
-                        </svg>
+                        <div class="lui-popup-arrow-example" />
                     </div>
 
-                    <div style="position: relative; width: 520px; height: 220px; border: 1px solid #ccc; margin-top: 10px;">
+                    <div style="position: relative; width: 520px; height: 360px; border: 1px solid #ccc; margin-top: 10px;">
                         <LuiPopover
                             :attach-to-body="false"
                             :auto-close="false"
                             :bind-resize="false"
                             :bind-scroll="false"
                             positions="bottom-right"
-                            :target="{left:10,top:10}"
+                            :target="{left:20,top:10}"
                             :width="100"
                         >
                             bottom-right
@@ -175,7 +155,7 @@
                             :bind-resize="false"
                             :bind-scroll="false"
                             positions="bottom-left"
-                            :target="{left:510,top:10}"
+                            :target="{left:500,top:10}"
                             :width="100"
                         >
                             bottom-left
@@ -186,8 +166,20 @@
                             :auto-close="false"
                             :bind-resize="false"
                             :bind-scroll="false"
+                            positions="left-bottom"
+                            :target="{left:510,top:90}"
+                            :width="100"
+                        >
+                            left-bottom
+                        </LuiPopover>
+
+                        <LuiPopover
+                            :attach-to-body="false"
+                            :auto-close="false"
+                            :bind-resize="false"
+                            :bind-scroll="false"
                             positions="left-center"
-                            :target="{left:510,top:110}"
+                            :target="{left:510,top:180}"
                             :width="100"
                         >
                             left-center
@@ -198,8 +190,20 @@
                             :auto-close="false"
                             :bind-resize="false"
                             :bind-scroll="false"
+                            positions="left-top"
+                            :target="{left:510,top:270}"
+                            :width="100"
+                        >
+                            left-top
+                        </LuiPopover>
+
+                        <LuiPopover
+                            :attach-to-body="false"
+                            :auto-close="false"
+                            :bind-resize="false"
+                            :bind-scroll="false"
                             positions="top-left"
-                            :target="{left:510,top:210}"
+                            :target="{left:500,top:350}"
                             :width="100"
                         >
                             top-left
@@ -211,7 +215,7 @@
                             :bind-resize="false"
                             :bind-scroll="false"
                             positions="top-center"
-                            :target="{left:260,top:210}"
+                            :target="{left:260,top:350}"
                             :width="100"
                         >
                             top-center
@@ -223,7 +227,7 @@
                             :bind-resize="false"
                             :bind-scroll="false"
                             positions="top-right"
-                            :target="{left:10,top:210}"
+                            :target="{left:20,top:350}"
                             :width="100"
                         >
                             top-right
@@ -234,11 +238,35 @@
                             :auto-close="false"
                             :bind-resize="false"
                             :bind-scroll="false"
+                            positions="right-top"
+                            :target="{left:10,top:270}"
+                            :width="100"
+                        >
+                            right-top
+                        </LuiPopover>
+
+                        <LuiPopover
+                            :attach-to-body="false"
+                            :auto-close="false"
+                            :bind-resize="false"
+                            :bind-scroll="false"
                             positions="right-center"
-                            :target="{left:10,top:110}"
+                            :target="{left:10,top:180}"
                             :width="100"
                         >
                             right-center
+                        </LuiPopover>
+
+                        <LuiPopover
+                            :attach-to-body="false"
+                            :auto-close="false"
+                            :bind-resize="false"
+                            :bind-scroll="false"
+                            positions="right-bottom"
+                            :target="{left:10,top:90}"
+                            :width="100"
+                        >
+                            right-bottom
                         </LuiPopover>
                     </div>
                 </div>
@@ -425,5 +453,11 @@ body {
 
 .lui-popover-example .lui-popover-content {
     text-align: center;
+}
+
+.lui-popup-arrow-example {
+    height: 54px;
+    background-repeat: no-repeat;
+    background-image: url(../../src/components/popup/popup-arrow.svg);
 }
 </style>

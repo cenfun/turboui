@@ -16,31 +16,13 @@
 </template>
 
 <script>
+import Popup from "../popup/popup.vue";
 import { token } from "../../helper/util.js";
 import createElement from "../../helper/create-element.js";
-import {
-    getDefaultPositions, getBestPosition, getRect, getElement
-} from "../../helper/popover.js";
 
 const Tooltip = {
+    extends: Popup,
     props: {
-
-        target: {
-            type: [String, Object],
-            default: ""
-        },
-
-        bindTarget: {
-            type: Boolean,
-            default: false
-        },
-
-        positions: {
-            type: [String, Array],
-            default: () => {
-                return getDefaultPositions();
-            }
-        },
 
         text: {
             type: String,
@@ -69,16 +51,6 @@ const Tooltip = {
             validator(value) {
                 return ["default", "prompt", "warn", "error"].indexOf(value) > -1;
             }
-        },
-
-        attachToBody: {
-            type: Boolean,
-            default: true
-        },
-
-        container: {
-            type: [String, Object, Document, Window],
-            default: ""
         }
 
     },
@@ -114,16 +86,17 @@ const Tooltip = {
         classBody() {
             const list = [
                 "lui",
+                "lui-popup",
+                `lui-popup-${this.position}-${this.align}`,
                 "lui-tooltip-body",
                 "lui-tooltip",
-                `lui-tooltip--${this.styling}`,
-                `lui-tooltip--${this.size}`,
-                `lui-tooltip--width-${this.width}`,
-                `lui-tooltip--${this.position}-${this.align}`,
+                `lui-tooltip-${this.styling}`,
+                `lui-tooltip-${this.size}`,
+                `lui-tooltip-width-${this.width}`,
                 this.classId
             ];
             if (this.styling === "warn") {
-                list.splice(2, 0, "lui-tooltip--default");
+                list.splice(2, 0, "lui-tooltip-default");
             }
             return list;
         }
@@ -180,7 +153,7 @@ const Tooltip = {
             if (!this.bindTarget) {
                 return;
             }
-            const $target = getElement(this.target);
+            const $target = this.getElement(this.target);
             if ($target) {
                 this.$target = $target;
                 this.$target.addEventListener("mouseenter", this.openHandler);
@@ -237,9 +210,8 @@ const Tooltip = {
             if (!this.show) {
                 return this;
             }
-            const containerRect = getRect(this.container || window);
-
-            const targetRect = getRect(this.target);
+            const containerRect = this.getRect(this.container || window);
+            const targetRect = this.getRect(this.target);
 
             //fix for arrow size
             const arrowSize = 10;
@@ -248,11 +220,11 @@ const Tooltip = {
             targetRect.width += arrowSize * 2;
             targetRect.height += arrowSize * 2;
 
-            const rect = getRect(`.${this.classId}`);
+            const rect = this.getRect(`.${this.classId}`);
 
             //console.log(containerRect, targetRect, rect);
             
-            this.positionInfo = getBestPosition(
+            this.positionInfo = this.getBestPosition(
                 containerRect,
                 targetRect,
                 rect,
@@ -280,7 +252,6 @@ const Tooltip = {
     }
 };
 
-Tooltip.getDefaultPositions = getDefaultPositions;
 Tooltip.create = (option, container) => {
     return createElement(Tooltip, option, container);
 };
@@ -290,7 +261,7 @@ export default Tooltip;
 
 <style lang="scss">
 $warn-color: #f5c400;
-$pre: "lui-tooltip--";
+$pre: "lui-tooltip-";
 $positions: bottom right top left;
 
 .lui-tooltip {

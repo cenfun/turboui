@@ -47,8 +47,6 @@ export default {
 };
 </script>
 <style lang="scss">
-@import "./layout.scss";
-
 .lui,
 .lui ::before,
 .lui ::after,
@@ -79,6 +77,50 @@ export default {
     select {
         text-transform: none;
     }
+}
+
+/*
+layout
+*/
+
+.lui-hs-5 {
+    display: inline-block;
+    width: 5px;
+    height: 100%;
+}
+
+.lui-hs-10 {
+    display: inline-block;
+    width: 10px;
+    height: 100%;
+}
+
+.lui-vs-5 {
+    display: block;
+    height: 5px;
+}
+
+.lui-vs-10 {
+    display: block;
+    height: 10px;
+}
+
+.lui-flex-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    position: relative;
+}
+
+.lui-flex-column {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.lui-flex-auto {
+    flex: 1 1 0%;
+    overflow: hidden;
 }
 
 </style>
