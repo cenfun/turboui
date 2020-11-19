@@ -21,3 +21,6 @@ export default {
 ```
 
 ## Changelog
+
+* v1.0.3
+    * added popover and tooltip

@@ -283,10 +283,10 @@
                     <LuiButton tooltip="This is LuiTooltip left This is LuiTooltip left">
                         Hover Tooltip
                     </LuiButton>
-                    <LuiButton style="position: absolute; right: 0;" tooltip="This is LuiTooltip right">
+                    <LuiButton style="position: absolute; right: 0; top: 0;" tooltip="This is LuiTooltip right">
                         Hover Tooltip
                     </LuiButton>
-                    <LuiButton style="position: absolute; left: 50%;" tooltip="This is LuiTooltip center">
+                    <LuiButton style="position: absolute; left: 50%; top: 0;" tooltip="This is LuiTooltip center">
                         Hover Tooltip
                     </LuiButton>
                 </div>
